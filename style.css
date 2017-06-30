@@ -1,9 +1,18 @@
 .fruit-button {
-  width: 100px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
   background-color: red;
   text-align: center;
   color: white;
   border: 1px solid black;
   display: inline-block;
+  margin: 20px;
+}
+
+#userContainer {
+  padding: 20px;
+}
+
+#fruitContainer {
+  padding: 20px;
 }
