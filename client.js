@@ -31,8 +31,8 @@
 var fruitArray = ['Apples', 'Oranges', 'Bananas', 'Grapes'];
 
 var startingPrice = 5.00; // whole numbers = dollarz
-var minSwing = 5.01;
-var maxSwing = 9.03;
+var minSwing = 0.03;
+var maxSwing = 1.97;
 var minPrice = 0.50;
 var maxPrice = 9.99;
 var gameIntervalTime = 1000;
@@ -47,18 +47,21 @@ function Fruit(name, price) {
     var priceSwing = randomNumber(minSwing, maxSwing);
     var randomAdjustment = randomNumber(1,2);
     if(randomAdjustment == 1){
-      priceSwing = -priceSwing.toFixed(2);
+      priceSwing = -priceSwing;
     }
     // console.log(priceSwing);
     // console.log(this.price);
-    priceSwing = priceSwing/100;
+    priceSwing = priceSwing - minSwing;
     this.price += priceSwing;
+    if (this.price > maxPrice) {
+      this.price = maxPrice;
+
+    } else if (this.price < minPrice){
+      this.price = minPrice;
+    }
   }
-  if (price > maxPrice) {
-    price = maxPrice;
-  } else if (price < minPrice){
-    price = minPrice;
-  }
+  // console.log("maxPrice is ", maxPrice);
+
 }
 
 // var someFruit = new Fruit(fruitArray[0], 65);
