@@ -71,6 +71,7 @@ function Fruit(name, price) {
 function User(){
   this.startingCash = startingCash;
   this.totalCash = startingCash;
+
 }
 
 
@@ -107,6 +108,7 @@ function clickFruit(){
     user["inv" + fruit].push(price);
     user.totalCash -= price;
     console.log(user);
+    $('#userContainer').append("<div class='totalCash'>" + user.totalCash.toFixed(2) + "</div>");
 }
 }
 
