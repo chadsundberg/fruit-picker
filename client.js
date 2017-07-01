@@ -93,7 +93,7 @@ function init() {
 
 function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
-  $("#fruitContainer").on('click', '.sell-button', sellFruit);
+  $("#sellContainer").on('click', '.sell-button', sellFruit);
 
   setInterval(gameInterval, gameIntervalTime);
 }
@@ -154,9 +154,11 @@ function buildDomFruits(array){
   // $('#fruitContainer').empty();
   for (var i = 0; i < array.length; i++) {
     // $('#fruitContainer').empty();
-    $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
     // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').children().last();
     var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", array[i].name);
@@ -164,7 +166,13 @@ function buildDomFruits(array){
     $el.append('<p>' + array[i].name + '</p>');
     $el.append("<p class='fruit-price'>" + array[i].price + '</p>');
     array[i].element = $el;
-    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    $('#sellContainer').append("<button class='sell-button'>Sell</div>");
+    var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    $ele.data("fruit", array[i].name);
+    $ele.data("price", array[i].price);
+    // $el.append('<p>' + array[i].name + '</p>');
+    // $el.append("<p class='fruit-price'>" + array[i].price + '</p>');
+    // array[i].element = $el;
   }
 }
 
