@@ -93,6 +93,7 @@ function init() {
 
 function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
+  $("#fruitContainer").on('click', '.sell-button', sellFruit);
 
   setInterval(gameInterval, gameIntervalTime);
 }
@@ -114,6 +115,17 @@ function clickFruit(){
     document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
     // $('#userContainer').append("<div>" + user.totalCash.toFixed(2) + "</div>").first();
 }
+}
+
+function sellFruit(){
+
+  var fruit = $(this).data("fruit");
+  var price = $(this).data("price");
+
+  user["inv" + fruit]--;
+  user.totalCash += price;
+  // console.log(user);
+  document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
 }
 
 function gameInterval(){
@@ -142,15 +154,17 @@ function buildDomFruits(array){
   // $('#fruitContainer').empty();
   for (var i = 0; i < array.length; i++) {
     // $('#fruitContainer').empty();
+    $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
+    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').children().last();
     var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", array[i].name);
     $el.data("price", array[i].price);
     $el.append('<p>' + array[i].name + '</p>');
     $el.append("<p class='fruit-price'>" + array[i].price + '</p>');
-
     array[i].element = $el;
+    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
   }
 }
 
