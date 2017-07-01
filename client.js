@@ -39,12 +39,14 @@ var gameIntervalTime = 1000;
 var startingCash = 100;
 var user;
 
+startingPrice.toFixed(2);
+// document.getElementById("#userCash") = totalCash;
 
 function Fruit(name, price) {
   this.name = name;
   this.price = price;
   this.changePrice = function(){
-    var priceSwing = randomNumber(minSwing, maxSwing);
+    var priceSwing = randomNumber(minSwing, maxSwing).toFixed(2);
     var randomAdjustment = randomNumber(1,2);
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
@@ -53,6 +55,7 @@ function Fruit(name, price) {
     // console.log(this.price);
     priceSwing = priceSwing - minSwing;
     this.price += priceSwing;
+    (this.price).toFixed(2);
     if (this.price > maxPrice) {
       this.price = maxPrice;
 
@@ -71,7 +74,7 @@ function Fruit(name, price) {
 function User(){
   this.startingCash = startingCash;
   this.totalCash = startingCash;
-
+  $('#userContainer').first().append("<div>" + startingCash.toFixed(2) + "</div>");
 }
 
 
@@ -108,7 +111,8 @@ function clickFruit(){
     user["inv" + fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    $('#userContainer').append("<div class='totalCash'>" + user.totalCash.toFixed(2) + "</div>");
+    document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+    // $('#userContainer').append("<div>" + user.totalCash.toFixed(2) + "</div>").first();
 }
 }
 

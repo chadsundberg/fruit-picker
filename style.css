@@ -21,3 +21,10 @@
   font-size: 24px;
   font-family: sans-serif;
 }
+
+.totalCash {
+  padding: 20px;
+  font-size: 32px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
