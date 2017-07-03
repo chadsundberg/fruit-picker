@@ -122,11 +122,13 @@ function sellFruit(){
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
 
-  if (fruit.length > 0) {
-  user["inv" + fruit].pop(price);
+  // if (fruit.length > 0) {
+  // fruit--;
   // user["inv" + fruit];
-}
+  // fruit.length--;
+// }
   user.totalCash += price;
+  
   // console.log(user);
   document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
 }
@@ -173,8 +175,10 @@ function buildDomFruits(array){
     var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $ele.data("fruit", array[i].name);
     $ele.data("price", array[i].price);
-    // $ele.append('<p>' + array[i].name + '</p>');
-    // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
+    // $ele.remove('<p>'  + array[i].name + '<p>');
+    // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
+    // $ele.pop('<p>' + array[i].name + '</p>');
+    // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
     // array[i].element = $ele;
   }
 }
