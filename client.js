@@ -128,7 +128,9 @@ function sellFruit(){
   // fruit.length--;
 // }
   user.totalCash += price;
-  
+
+  // console.log(fruit);
+  console.log(fruit, price);
   // console.log(user);
   document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
 }
