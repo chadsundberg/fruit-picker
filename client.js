@@ -43,7 +43,7 @@ var user;
 // var $ele;
 
 startingPrice.toFixed(2);
-// document.getElementById("#userCash") = totalCash;
+
 
 function Fruit(name, price) {
   this.name = name;
@@ -54,8 +54,7 @@ function Fruit(name, price) {
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
     }
-    // console.log(priceSwing);
-    // console.log(this.price);
+    
     priceSwing = priceSwing - minSwing;
     this.price += priceSwing;
     (this.price).toFixed(2);
