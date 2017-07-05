@@ -121,12 +121,19 @@ function sellFruit(){
 
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
+  // array[i].element = $ele;
 
-  // if (fruit.length > 0) {
-  // fruit--;
+  // $ele.remove('<p>'  + array[i].name + '<p>');
+  // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
+  // this.pop('<p>' + array[i].name + '</p>');
+  // this.pop("<p class='fruit-price'>" + array[i].price + '</p>');
+  // array[i].element = $ele;
+
+  if (user["inv" + fruit] > 0) {
+  user["inv" + fruit]--;
   // user["inv" + fruit];
   // fruit.length--;
-// }
+}
   user.totalCash += price;
 
   // console.log(fruit);
