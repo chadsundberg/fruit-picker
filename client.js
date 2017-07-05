@@ -38,6 +38,9 @@ var maxPrice = 9.99;
 var gameIntervalTime = 1000;
 var startingCash = 100;
 var user;
+// var $ele;
+// var $el;
+// var $ele;
 
 startingPrice.toFixed(2);
 // document.getElementById("#userCash") = totalCash;
@@ -87,7 +90,9 @@ $(document).ready(function(){
 function init() {
   user = new User();
   buildFruits(fruitArray);
+  buildSellButtons(fruitArray);
   buildDomFruits(fruitArray);
+  // buildSellButtons(fruitArray);
   enable();
 }
 
@@ -119,7 +124,12 @@ function clickFruit(){
 
 function sellFruit(){
 
+
+  // var fruit = document.getElementById("fruitContainer").data.fruit;
+  // var price = $("#fruitContainer").data("price");
+
   var fruit = $(this).data("fruit");
+  // document.getElementById("fruitContainer").data.price = var price;
   var price = $(this).data("price");
   // array[i].element = $ele;
 
@@ -129,17 +139,20 @@ function sellFruit(){
   // this.pop("<p class='fruit-price'>" + array[i].price + '</p>');
   // array[i].element = $ele;
 
-  if (user["inv" + fruit] > 0) {
-  user["inv" + fruit]--;
+  // if (user["inv" + fruit] >= 0) {
+    console.log("user.invFruit ", user["inv" + fruit]);
+  user["inv" + fruit].pop();
+  console.log("user.invFruit ", user["inv" + fruit]);
   // user["inv" + fruit];
   // fruit.length--;
-}
+// }
   user.totalCash += price;
 
   // console.log(fruit);
   console.log(fruit, price);
   // console.log(user);
   document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+  console.log("user after selling ", user);
 }
 
 function gameInterval(){
@@ -180,15 +193,23 @@ function buildDomFruits(array){
     $el.append('<p>' + array[i].name + '</p>');
     $el.append("<p class='fruit-price'>" + array[i].price + '</p>');
     array[i].element = $el;
+
+  }
+}
+
+function buildSellButtons(array){
+  for (var i = 0; i < array.length; i++){
     $('#sellContainer').append("<button class='sell-button'>Sell</div>");
     var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $ele.data("fruit", array[i].name);
     $ele.data("price", array[i].price);
+    // $ele.append('<p>' + array[i].name + '</p>');
+    // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.remove('<p>'  + array[i].name + '<p>');
     // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.pop('<p>' + array[i].name + '</p>');
     // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    // array[i].element = $ele;
+    array[i].element = $ele;
   }
 }
 
@@ -197,7 +218,7 @@ for (var i = 0; i < fruitArray.length; i++) {
   var fruit = fruitArray[i];
   // fruit.price = fruit.price.toFixed(2);
   fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
-  fruit.element.data("price", fruit.price);
+  fruit.element.data("price", fruit.price.toFixed(2));
 }
 
 }
