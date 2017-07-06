@@ -54,7 +54,7 @@ function Fruit(name, price) {
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
     }
-    
+
     priceSwing = priceSwing - minSwing;
     this.price += priceSwing;
     (this.price).toFixed(2);
@@ -222,6 +222,8 @@ for (var i = 0; i < fruitArray.length; i++) {
 
 }
 
+
+// Utility functions
 function randomNumber(min, max) {
 	return Math.floor(Math.random() * (1 + max - min) + min);
 }
