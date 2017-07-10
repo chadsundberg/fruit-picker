@@ -35,7 +35,7 @@ var minSwing = 0.03;
 var maxSwing = 1.97;
 var minPrice = 0.50;
 var maxPrice = 9.99;
-var gameIntervalTime = 1000;
+var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
 // var $ele;
