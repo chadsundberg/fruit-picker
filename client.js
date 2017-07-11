@@ -91,7 +91,6 @@ function init() {
   buildFruits(fruitArray);
   buildSellButtons(fruitArray);
   buildDomFruits(fruitArray);
-  // buildSellButtons(fruitArray);
   enable();
 }
 
