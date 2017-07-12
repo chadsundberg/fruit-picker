@@ -155,7 +155,7 @@ function sellFruit(){
 
 function gameInterval(){
   for (var i = 0; i < fruitArray.length; i++) {
-    fruitArray[i].changePrice();
+    fruitArray[i].changePrice(); // creates changing prices for each fruit
     // console.log(fruitArray[i].name, fruitArray[i].price);
   }
   // buildDomFruits(fruitArray);
@@ -175,7 +175,7 @@ function buildFruits(array){
   console.log(user);
 }
 
-function buildDomFruits(array){
+function buildDomFruits(array){ // this function builds the fruit list on the DOM and assigns prices.
   // $('#fruitContainer').empty();
   for (var i = 0; i < array.length; i++) {
     // $('#fruitContainer').empty();
@@ -189,10 +189,20 @@ function buildDomFruits(array){
     $el.data("fruit", array[i].name);
     $el.data("price", array[i].price);
     $el.append('<p>' + array[i].name + '</p>');
-    $el.append("<p class='fruit-price'>" + array[i].price + '</p>');
+    $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
     array[i].element = $el;
 
   }
+}
+
+function updateFruitDom(){ // this function updates prices of fruit on the DOM
+for (var i = 0; i < fruitArray.length; i++) {
+  var fruit = fruitArray[i];
+  // fruit.price = fruit.price.toFixed(2);
+  fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
+  fruit.element.data("price", fruit.price.toFixed(2));
+}
+
 }
 
 function buildSellButtons(array){
@@ -209,16 +219,6 @@ function buildSellButtons(array){
     // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
     array[i].element = $ele;
   }
-}
-
-function updateFruitDom(){
-for (var i = 0; i < fruitArray.length; i++) {
-  var fruit = fruitArray[i];
-  // fruit.price = fruit.price.toFixed(2);
-  fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
-  fruit.element.data("price", fruit.price.toFixed(2));
-}
-
 }
 
 
