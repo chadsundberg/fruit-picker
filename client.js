@@ -45,7 +45,7 @@ var user;
 startingPrice.toFixed(2);
 
 
-function Fruit(name, price) {
+function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
   this.price = price;
   this.changePrice = function(){
@@ -73,7 +73,7 @@ function Fruit(name, price) {
 // console.log(someFruit);   this was used as a test fruit
 
 
-function User(){
+function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
   this.totalCash = startingCash;
   $('#userContainer').first().append("<div>" + startingCash.toFixed(2) + "</div>");
@@ -81,17 +81,65 @@ function User(){
 
 
 $(document).ready(function(){
-  init();
-
-
+  init(); // the entire game runs within this function
 });
 
-function init() {
+function init() { // the init function is a string of other functions
   user = new User();
   buildFruits(fruitArray);
-  buildSellButtons(fruitArray);
   buildDomFruits(fruitArray);
+  buildSellButtons(fruitArray);
   enable();
+}
+
+function buildFruits(array){ // first function called in init(), it takes in the fruit array and adds name and price to new fruit objects
+  // console.log(array);  testing my theory
+  for (var i = 0; i < array.length; i++) {
+    var newFruit = new Fruit(array[i], startingPrice); // 50 is called a 'magic number' - which is an intentional test number that will need to be reset
+    array[i] = newFruit;  // so we had to create a new variable outside of doc ready called startingPrice to replace our magic number
+    newFruit.changePrice();
+
+    user["inv" + newFruit.name] = [];
+  }
+  // console.log(array); testing it again
+  console.log(user);
+}
+
+function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
+  // $('#fruitContainer').empty();
+  for (var i = 0; i < array.length; i++) {
+    // $('#fruitContainer').empty();
+    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
+    $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
+    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
+    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
+    $('#fruitContainer').children().last();
+    var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    $el.data("fruit", array[i].name);
+    $el.data("price", array[i].price);
+    $el.append('<p>' + array[i].name + '</p>');
+    $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
+    array[i].element = $el;
+
+  }
+}
+
+function buildSellButtons(array){ // this function creates sell buttons on the DOM
+  for (var i = 0; i < array.length; i++){
+    $('#sellContainer').append("<button class='sell-button'>Sell</div>");
+    $('#sellContainer').children().last();
+    var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    $ele.data("fruit", array[i].name);
+    $ele.data("price", array[i].price);
+    // $ele.append('<p>' + array[i].name + '</p>');
+    // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
+    // $ele.remove('<p>'  + array[i].name + '<p>');
+    // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
+    // $ele.pop('<p>' + array[i].name + '</p>');
+    // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
+    // array[i].element = $ele;
+}
 }
 
 function enable(){
@@ -103,21 +151,6 @@ function enable(){
 
 function disable(){
   clearInterval(gameInterval);
-}
-
-
-function clickFruit(){
-
-  var fruit = $(this).data("fruit");
-  var price = $(this).data("price");
-
-  if(user.totalCash >= price){
-    user["inv" + fruit].push(price);
-    user.totalCash -= price;
-    console.log(user);
-    document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
-    // $('#userContainer').append("<div>" + user.totalCash.toFixed(2) + "</div>").first();
-}
 }
 
 function sellFruit(){
@@ -153,6 +186,21 @@ function sellFruit(){
   console.log("user after selling ", user);
 }
 
+
+function clickFruit(){
+
+  var fruit = $(this).data("fruit");
+  var price = $(this).data("price");
+
+  if(user.totalCash >= price){
+    user["inv" + fruit].push(price);
+    user.totalCash -= price;
+    console.log(user);
+    document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+    // $('#userContainer').append("<div>" + user.totalCash.toFixed(2) + "</div>").first();
+}
+}
+
 function gameInterval(){
   for (var i = 0; i < fruitArray.length; i++) {
     fruitArray[i].changePrice(); // creates changing prices for each fruit
@@ -162,39 +210,6 @@ function gameInterval(){
    updateFruitDom();
 }
 
-function buildFruits(array){
-  // console.log(array);  testing my theory
-  for (var i = 0; i < array.length; i++) {
-    var newFruit = new Fruit(array[i], startingPrice); // 50 is called a 'magic number' - which is an intentional test number that will need to be reset
-    array[i] = newFruit;  // so we had to create a new variable outside of doc ready called startingPrice to replace our magic number
-    newFruit.changePrice();
-
-    user["inv" + newFruit.name] = [];
-  }
-  // console.log(array); testing it again
-  console.log(user);
-}
-
-function buildDomFruits(array){ // this function builds the fruit list on the DOM and assigns prices.
-  // $('#fruitContainer').empty();
-  for (var i = 0; i < array.length; i++) {
-    // $('#fruitContainer').empty();
-    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
-    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
-    $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
-    // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
-    // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
-    $('#fruitContainer').children().last();
-    var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
-    $el.data("fruit", array[i].name);
-    $el.data("price", array[i].price);
-    $el.append('<p>' + array[i].name + '</p>');
-    $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
-    array[i].element = $el;
-
-  }
-}
-
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
 for (var i = 0; i < fruitArray.length; i++) {
   var fruit = fruitArray[i];
@@ -202,24 +217,8 @@ for (var i = 0; i < fruitArray.length; i++) {
   fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
   fruit.element.data("price", fruit.price.toFixed(2));
 }
-
 }
 
-function buildSellButtons(array){
-  for (var i = 0; i < array.length; i++){
-    $('#sellContainer').append("<button class='sell-button'>Sell</div>");
-    var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
-    $ele.data("fruit", array[i].name);
-    $ele.data("price", array[i].price);
-    // $ele.append('<p>' + array[i].name + '</p>');
-    // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
-    // $ele.remove('<p>'  + array[i].name + '<p>');
-    // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
-    // $ele.pop('<p>' + array[i].name + '</p>');
-    // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    array[i].element = $ele;
-  }
-}
 
 
 // Utility functions
