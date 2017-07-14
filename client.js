@@ -64,6 +64,7 @@ function Fruit(name, price) { // object constructor assigning name and price, an
     } else if (this.price < minPrice){
       this.price = minPrice;
     }
+    // _displayFlash("Changing Prices...");
   }
   // console.log("maxPrice is ", maxPrice);
 
@@ -115,7 +116,7 @@ function buildDomFruits(array){ // This is the second function called in init().
     // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
     // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').children().last();
-    var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    let $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", array[i].name);
     $el.data("price", array[i].price);
     $el.append('<p>' + array[i].name + '</p>');
@@ -138,7 +139,7 @@ function buildSellButtons(array){ // this function creates sell buttons on the D
     // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.pop('<p>' + array[i].name + '</p>');
     // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    // array[i].element = $ele;
+    array[i].element = $ele;
 }
 }
 
