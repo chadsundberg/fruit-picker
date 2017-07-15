@@ -148,7 +148,7 @@ function sellFruit(){ // create a way to average price of fruit sold
   console.log("user after selling ", user);
 }
 
-function clickFruit(){
+function clickFruit(){ // need to add in code that averages price of fruit purchased
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
   if(user.totalCash >= price){
@@ -162,20 +162,17 @@ function clickFruit(){
 function gameInterval(){
   for (var i = 0; i < fruitArray.length; i++) {
     fruitArray[i].changePrice(); // creates changing prices for each fruit
-    // console.log(fruitArray[i].name, fruitArray[i].price);
   }
-  // buildDomFruits(fruitArray);
    updateFruitDom();
    buildSellButtons();
 }
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
-for (var i = 0; i < fruitArray.length; i++) {
-  var fruit = fruitArray[i];
-  // fruit.price = fruit.price.toFixed(2);
-  fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
-  fruit.element.data("price", fruit.price.toFixed(2));
-}
+  for (var i = 0; i < fruitArray.length; i++) {
+    var fruit = fruitArray[i];
+    fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
+    fruit.element.data("price", fruit.price.toFixed(2));
+  }
 }
 
 
