@@ -42,7 +42,7 @@ var user;
 // var $el;
 // var $ele;
 
-startingPrice.toFixed(2);
+// startingPrice.toFixed(2);
 
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
@@ -89,7 +89,7 @@ function init() { // the init function is a string of other functions
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
-  buildSellButtons(fruitArray);
+  // buildSellButtons(fruitArray);
   enable();
 }
 
@@ -126,22 +126,33 @@ function buildDomFruits(array){ // This is the second function called in init().
   // buildSellButtons(array);
 }
 
-function buildSellButtons(array){ // this function creates sell buttons on the DOM
-  for (var i = 0; i < array.length; i++){
+function buildSellButtons(){ // this function creates sell buttons on the DOM
+  $('#sellContainer').empty();
+  for (var i = 0; i < fruitArray.length; i++){
+    var name = fruitArray[i].name;
+    var price = fruitArray[i].price;
+    // fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
+    // fruit.element.data("price", fruit.price.toFixed(2));
     $('#sellContainer').append("<button class='sell-button'>Sell</div>");
     $('#sellContainer').children().last();
+    // var elFruitName = document.getElementsByName('fruit');
+    // var elFruitPrice = document.getElementsByName('price');
+
     var $el = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
-    $el.data("fruit", array[i].name);
-    $el.data("price", array[i].price);
-    // $('.sell-button').data("fruit", array[i].name);
-    // $('.sell-button').data("price", array[i].price);
+    $el.data("fruit", name);
+    $el.data("price", price);
+    // fruit.element.data("price", fruit.price.toFixed(2));
+    // $el.data("fruit", fruit.element.name);
+    // $el.data("price", fruit.element.price);
     // $ele.append('<p>' + array[i].name + '</p>');
-    // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
+    // $el.append("<p class='fruit-price'>" + price + '</p>');
+    // $el.append(name);
+    // $el.append(price);
     // $ele.remove('<p>'  + array[i].name + '<p>');
     // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.pop('<p>' + array[i].name + '</p>');
     // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    // array[i].element = $ele;
+    // array[i].element = $el;
 }
 }
 
@@ -171,19 +182,21 @@ function sellFruit(){
   // this.pop("<p class='fruit-price'>" + array[i].price + '</p>');
   // array[i].element = $ele;
 // for (var i = 0; i < fruitArray.length; i++){
-  console.log(fruit + " sell button pushed");
+  // console.log(fruit + " sell button pushed");
   console.log("The sell price of " + fruit + " is " + price);
   if (user["inv" + fruit].length > 0 ) {
-  console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
+  // console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
   user["inv" + fruit].pop();
   console.log(fruit + " inventory after .pop", user["inv" + fruit]);
+  // user.totalCash += price;
 } else {
-  alert("You have no " + fruit + " left to sell.")
+  alert("You have no " + fruit + " left to sell.");
 }
   // user["inv" + fruit];
   // fruit.length--;
 // }
-  user.totalCash += price;
+user.totalCash += price;
+document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
   // console.log(fruit);
   console.log(fruit, price);
   // console.log(user);
@@ -213,6 +226,7 @@ function gameInterval(){
   }
   // buildDomFruits(fruitArray);
    updateFruitDom();
+   buildSellButtons();
 }
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
