@@ -52,7 +52,6 @@ function Fruit(name, price) { // object constructor assigning name and price, an
     (this.price).toFixed(2);
     if (this.price > maxPrice) {
       this.price = maxPrice;
-
     } else if (this.price < minPrice){
       this.price = minPrice;
     }
@@ -64,7 +63,6 @@ function User(){ // sets a user with starting cash to play the game and is used 
   this.totalCash = startingCash;
   $('#userContainer').first().append("<div>" + startingCash.toFixed(2) + "</div>");
 }
-
 
 $(document).ready(function(){
   init(); // the entire game runs within this function
@@ -172,9 +170,6 @@ function updateFruitDom(){ // this function updates prices of fruit on the DOM
     fruit.element.data("price", fruit.price.toFixed(2));
   }
 }
-
-
-
 // Utility functions
 function randomNumber(min, max) {
 	return Math.floor(Math.random() * (1 + max - min) + min);
