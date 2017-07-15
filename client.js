@@ -148,19 +148,15 @@ function sellFruit(){ // create a way to average price of fruit sold
   console.log("user after selling ", user);
 }
 
-
 function clickFruit(){
-
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
-
   if(user.totalCash >= price){
     user["inv" + fruit].push(price);
     user.totalCash -= price;
     console.log(user);
     document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
-    // $('#userContainer').append("<div>" + user.totalCash.toFixed(2) + "</div>").first();
-}
+  }
 }
 
 function gameInterval(){
