@@ -159,8 +159,8 @@ function gameInterval(){
   for (var i = 0; i < fruitArray.length; i++) {
     fruitArray[i].changePrice(); // creates changing prices for each fruit
   }
-   updateFruitDom();
-   buildSellButtons();
+  updateFruitDom();
+  buildSellButtons();
 }
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
@@ -170,7 +170,8 @@ function updateFruitDom(){ // this function updates prices of fruit on the DOM
     fruit.element.data("price", fruit.price.toFixed(2));
   }
 }
+
 // Utility functions
 function randomNumber(min, max) {
-	return Math.floor(Math.random() * (1 + max - min) + min);
+  return Math.floor(Math.random() * (1 + max - min) + min);
 }
