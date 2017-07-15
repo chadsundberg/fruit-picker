@@ -112,29 +112,12 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
   for (var i = 0; i < fruitArray.length; i++){
     var name = fruitArray[i].name;
     var price = fruitArray[i].price;
-    // fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
-    // fruit.element.data("price", fruit.price.toFixed(2));
     $('#sellContainer').append("<button class='sell-button'>Sell</div>");
     $('#sellContainer').children().last();
-    // var elFruitName = document.getElementsByName('fruit');
-    // var elFruitPrice = document.getElementsByName('price');
-
     var $el = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", name);
     $el.data("price", price);
-    // fruit.element.data("price", fruit.price.toFixed(2));
-    // $el.data("fruit", fruit.element.name);
-    // $el.data("price", fruit.element.price);
-    // $ele.append('<p>' + array[i].name + '</p>');
-    // $el.append("<p class='fruit-price'>" + price + '</p>');
-    // $el.append(name);
-    // $el.append(price);
-    // $ele.remove('<p>'  + array[i].name + '<p>');
-    // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
-    // $ele.pop('<p>' + array[i].name + '</p>');
-    // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    // array[i].element = $el;
-}
+  }
 }
 
 function enable(){
