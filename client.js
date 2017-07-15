@@ -130,40 +130,21 @@ function disable(){
   clearInterval(gameInterval);
 }
 
-function sellFruit(){
-  // var fruit = document.getElementById("fruitContainer").data.fruit;
-  // var price = $("#fruitContainer").data("price");
-
+function sellFruit(){ // create a way to average price of fruit sold
   var fruit = $(this).data("fruit");
-  // document.getElementById("fruitContainer").data.price = var price;
   var price = $(this).data("price");
-  // array[i].element = $ele;
-
-  // $ele.remove('<p>'  + array[i].name + '<p>');
-  // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
-  // this.pop('<p>' + array[i].name + '</p>');
-  // this.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-  // array[i].element = $ele;
-// for (var i = 0; i < fruitArray.length; i++){
-  // console.log(fruit + " sell button pushed");
-  console.log("The sell price of " + fruit + " is " + price);
+  // console.log("The sell price of " + fruit + " is " + price);
   if (user["inv" + fruit].length > 0 ) {
-  // console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
-  user["inv" + fruit].pop();
-  console.log(fruit + " inventory after .pop", user["inv" + fruit]);
-  // user.totalCash += price;
-} else {
-  alert("You have no " + fruit + " left to sell.");
-}
-  // user["inv" + fruit];
-  // fruit.length--;
-// }
-user.totalCash += price;
-document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
-  // console.log(fruit);
+    // console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
+    user["inv" + fruit].pop();
+    console.log(fruit + " inventory after .pop", user["inv" + fruit]);
+    // user.totalCash += price;
+  } else {
+    alert("You have no " + fruit + " left to sell.");
+  }
+  user.totalCash += price;
+  document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
   console.log(fruit, price);
-  // console.log(user);
-  // document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
   console.log("user after selling ", user);
 }
 
