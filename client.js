@@ -39,8 +39,6 @@ var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
 // var $ele;
-// var $el;
-// var $ele;
 
 // startingPrice.toFixed(2);
 
