@@ -123,7 +123,6 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
 function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
-
   setInterval(gameInterval, gameIntervalTime);
 }
 
