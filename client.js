@@ -38,10 +38,6 @@ var maxPrice = 9.99;
 var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
-// var $ele;
-
-// startingPrice.toFixed(2);
-
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
