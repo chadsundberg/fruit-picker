@@ -81,15 +81,12 @@ function init() { // the init function is a string of other functions
 }
 
 function buildFruits(array){ // first function called in init(), it takes in the fruit array and adds name and price to new fruit objects
-  // console.log(array);  testing my theory
   for (var i = 0; i < array.length; i++) {
-    var newFruit = new Fruit(array[i], startingPrice); // 50 is called a 'magic number' - which is an intentional test number that will need to be reset
-    array[i] = newFruit;  // so we had to create a new variable outside of doc ready called startingPrice to replace our magic number
+    var newFruit = new Fruit(array[i], startingPrice);
+    array[i] = newFruit;
     newFruit.changePrice();
-
-    user["inv" + newFruit.name] = [];
+    user["inv" + newFruit.name] = []; // Todo - add the button constructor into this function so that sell buttons appear at the beginning of the game
   }
-  // console.log(array); testing it again
   console.log(user);
 }
 
