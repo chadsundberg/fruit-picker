@@ -58,15 +58,8 @@ function Fruit(name, price) { // object constructor assigning name and price, an
     } else if (this.price < minPrice){
       this.price = minPrice;
     }
-    // _displayFlash("Changing Prices...");
   }
-  // console.log("maxPrice is ", maxPrice);
-
 }
-
-// var someFruit = new Fruit(fruitArray[0], 65);
-// console.log(someFruit);   this was used as a test fruit
-
 
 function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
