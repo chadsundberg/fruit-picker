@@ -29,7 +29,6 @@
 // Try your hand at styling everything using CSS!
 
 var fruitArray = ['Apples', 'Oranges', 'Bananas', 'Grapes'];
-
 var startingPrice = 5.00; // whole numbers = dollarz
 var minSwing = 0.03;
 var maxSwing = 1.97;
@@ -48,7 +47,6 @@ function Fruit(name, price) { // object constructor assigning name and price, an
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
     }
-
     priceSwing = priceSwing - minSwing;
     this.price += priceSwing;
     (this.price).toFixed(2);
