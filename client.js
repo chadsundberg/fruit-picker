@@ -116,30 +116,32 @@ function buildDomFruits(array){ // This is the second function called in init().
     // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
     // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').children().last();
-    let $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", array[i].name);
     $el.data("price", array[i].price);
     $el.append('<p>' + array[i].name + '</p>');
     $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
     array[i].element = $el;
-
   }
+  // buildSellButtons(array);
 }
 
 function buildSellButtons(array){ // this function creates sell buttons on the DOM
   for (var i = 0; i < array.length; i++){
     $('#sellContainer').append("<button class='sell-button'>Sell</div>");
     $('#sellContainer').children().last();
-    var $ele = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
-    $ele.data("fruit", array[i].name);
-    $ele.data("price", array[i].price);
+    var $el = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
+    $el.data("fruit", array[i].name);
+    $el.data("price", array[i].price);
+    // $('.sell-button').data("fruit", array[i].name);
+    // $('.sell-button').data("price", array[i].price);
     // $ele.append('<p>' + array[i].name + '</p>');
     // $ele.append("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.remove('<p>'  + array[i].name + '<p>');
     // $ele.remove("<p class='fruit-price'>" + array[i].price + '</p>');
     // $ele.pop('<p>' + array[i].name + '</p>');
     // $ele.pop("<p class='fruit-price'>" + array[i].price + '</p>');
-    array[i].element = $ele;
+    // array[i].element = $ele;
 }
 }
 
@@ -155,8 +157,6 @@ function disable(){
 }
 
 function sellFruit(){
-
-
   // var fruit = document.getElementById("fruitContainer").data.fruit;
   // var price = $("#fruitContainer").data("price");
 
@@ -170,20 +170,24 @@ function sellFruit(){
   // this.pop('<p>' + array[i].name + '</p>');
   // this.pop("<p class='fruit-price'>" + array[i].price + '</p>');
   // array[i].element = $ele;
-
-  // if (user["inv" + fruit] >= 0) {
-    console.log("user.invFruit ", user["inv" + fruit]);
+// for (var i = 0; i < fruitArray.length; i++){
+  console.log(fruit + " sell button pushed");
+  console.log("The sell price of " + fruit + " is " + price);
+  if (user["inv" + fruit].length > 0 ) {
+  console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
   user["inv" + fruit].pop();
-  console.log("user.invFruit ", user["inv" + fruit]);
+  console.log(fruit + " inventory after .pop", user["inv" + fruit]);
+} else {
+  alert("You have no " + fruit + " left to sell.")
+}
   // user["inv" + fruit];
   // fruit.length--;
 // }
   user.totalCash += price;
-
   // console.log(fruit);
   console.log(fruit, price);
   // console.log(user);
-  document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+  // document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
   console.log("user after selling ", user);
 }
 
