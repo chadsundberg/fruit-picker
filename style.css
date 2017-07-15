@@ -30,9 +30,11 @@
   font-family: sans-serif;
   font-weight: bold;
 }
+
 html {
   font-family: sans-serif;
 }
+
 .sell-button {
   display: inline-block;
   /*padding: 20px;*/
