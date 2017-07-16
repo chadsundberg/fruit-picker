@@ -81,13 +81,13 @@ function buildFruits(array){ // first function called in init(), it takes in the
     var newFruit = new Fruit(array[i], startingPrice);
     array[i] = newFruit;
     newFruit.changePrice();
-    user["inv" + newFruit.name] = []; // Todo - add the button constructor into this function so that sell buttons appear at the beginning of the game
+    user["inv" + newFruit.name] = []; 
   }
   console.log(user);
 }
 
 function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
-  for (var i = 0; i < array.length; i++) { // or add the build sell buttons into this function and rename is buildDomGame or something
+  for (var i = 0; i < array.length; i++) {
     // $('#fruitContainer').append("<button class='sell-button'>Sell</div>");
     // $('#fruitContainer').children().first().append("<button class='sell-button'>Sell</div>");
     $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
@@ -101,6 +101,7 @@ function buildDomFruits(array){ // This is the second function called in init().
     $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
     array[i].element = $el;
   }
+  buildSellButtons();
 }
 
 function buildSellButtons(){ // this function creates sell buttons on the DOM
