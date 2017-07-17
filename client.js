@@ -47,7 +47,7 @@ function Fruit(name, price) { // object constructor assigning name and price, an
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
     } else {
-    priceSwing = priceSwing - minSwing;
+    priceSwing += minSwing;
   }
     this.price += priceSwing;
     (this.price).toFixed(2);
@@ -62,7 +62,7 @@ function Fruit(name, price) { // object constructor assigning name and price, an
 function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
   this.totalCash = startingCash;
-  $('#userContainer').first().append("<div>" + startingCash.toFixed(2) + "</div>");
+  $('#userContainer').first().append("<div>" + "$" + startingCash.toFixed(2) + "</div>");
 }
 
 $(document).ready(function(){
@@ -140,8 +140,8 @@ function sellFruit(){ // create a way to average price of fruit sold
   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
-  // user.totalCash += price;
-  document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+  $('#userContainer').empty();
+  $('#userContainer').first().append("<div>" + "$" + user.totalCash.toFixed(2) + "</div>");
   console.log(fruit, price);
   console.log("user after selling ", user);
 }
@@ -153,7 +153,8 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     user["inv" + fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
+    $('#userContainer').empty();
+    $('#userContainer').first().append("<div>" + "$" + user.totalCash.toFixed(2) + "</div>");
   }
 }
 
