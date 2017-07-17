@@ -62,7 +62,7 @@ function Fruit(name, price) { // object constructor assigning name and price, an
 function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
   this.totalCash = startingCash;
-  $('#userContainer').first().append("<div>" + "$" + startingCash.toFixed(2) + "</div>");
+  $('#userContainer').first().append("<div>" + "Total: $" + startingCash.toFixed(2) + "</div>");
 }
 
 $(document).ready(function(){
@@ -73,7 +73,6 @@ function init() { // the init function is a string of other functions
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
-  // buildSellButtons(fruitArray);
   enable();
 }
 
@@ -99,6 +98,7 @@ function buildDomFruits(array){ // This is the second function called in init().
     array[i].element = $el;
   }
   buildSellButtons();
+  totalCashMade();
 }
 
 function buildSellButtons(){ // this function creates sell buttons on the DOM
@@ -134,10 +134,11 @@ function sellFruit(){ // create a way to average price of fruit sold
   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
-  $('#userContainer').empty();
-  $('#userContainer').first().append("<div>" + "$" + user.totalCash.toFixed(2) + "</div>");
+  $('#userContainer').first().empty();
+  $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
   console.log(fruit, price);
   console.log("user after selling ", user);
+  totalCashMade();
 }
 
 function clickFruit(){ // need to add in code that averages price of fruit purchased
@@ -147,9 +148,10 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     user["inv" + fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    $('#userContainer').empty();
-    $('#userContainer').first().append("<div>" + "$" + user.totalCash.toFixed(2) + "</div>");
+    $('#userContainer').first().empty();
+    $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
   }
+  totalCashMade();
 }
 
 function gameInterval(){
@@ -166,6 +168,12 @@ function updateFruitDom(){ // this function updates prices of fruit on the DOM
     fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
     fruit.element.data("price", fruit.price.toFixed(2));
   }
+}
+
+function totalCashMade(){
+  var profit = user.totalCash.toFixed(2) - startingCash;
+  $('#profitContainer').last().empty();
+  $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
 // Utility functions
