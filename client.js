@@ -28,7 +28,7 @@
 // Master Mode
 // Try your hand at styling everything using CSS!
 
-var fruitArray = ['Apples', 'Oranges', 'Bananas', 'Grapes'];
+var fruitArray = ['apples', 'oranges', 'bananas', 'grapes'];
 var startingPrice = 5.00; // whole numbers = dollarz
 var minSwing = 0.03;
 var maxSwing = 1.97;
@@ -88,13 +88,13 @@ function buildFruits(array){ // first function called in init(), it takes in the
 
 function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
   for (var i = 0; i < array.length; i++) {
-    $('#fruitContainer').append("<div class='fruit-button'></div>"); // camelcase for iDs and dashes for classes
+    $('#fruitContainer').append("<div class=fruit-button></div>"); // camelcase for iDs and dashes for classes
     $('#fruitContainer').children().last();
     var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", array[i].name);
     $el.data("price", array[i].price);
-    $el.append('<p>' + array[i].name + '</p>');
-    $el.append("<p class='fruit-price'>" + array[i].price.toFixed(2) + '</p>');
+    $el.append("<p class='fruit-price'> $" + array[i].price.toFixed(2) + '</p>');
+    $el.addClass(array[i].name);
     array[i].element = $el;
   }
   buildSellButtons();
@@ -165,7 +165,7 @@ function gameInterval(){
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
   for (var i = 0; i < fruitArray.length; i++) {
     var fruit = fruitArray[i];
-    fruit.element.find(".fruit-price").text(fruit.price.toFixed(2));
+    fruit.element.find(".fruit-price").text("$" + fruit.price.toFixed(2));
     fruit.element.data("price", fruit.price.toFixed(2));
   }
 }

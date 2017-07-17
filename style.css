@@ -1,13 +1,33 @@
 .fruit-button {
   width: 200px;
   height: 200px;
-  background-color: red;
   text-align: center;
-  color: white;
+  font-style: bold;
+  font-size: 36px;
+  color: lime;
+  text-shadow: 2px 2px black;
   border: 1px solid black;
   display: inline-block;
   margin: 10px;
 }
+
+.apples {
+  background-image: url("./images/apples.jpeg");
+}
+
+.oranges {
+  background-image: url("./images/oranges.jpeg");
+}
+
+.bananas {
+  background-image: url("./images/bananas.jpeg");
+}
+
+.grapes {
+  background-image: url("./images/grapes.jpeg");
+}
+
+
 
 #userContainer {
   padding: 20px;
