@@ -81,7 +81,7 @@ function buildFruits(array){ // first function called in init(), it takes in the
     var newFruit = new Fruit(array[i], startingPrice);
     array[i] = newFruit;
     newFruit.changePrice();
-    user["inv" + newFruit.name] = []; 
+    user["inv" + newFruit.name] = [];
   }
   console.log(user);
 }
@@ -135,11 +135,11 @@ function sellFruit(){ // create a way to average price of fruit sold
     // console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
     user["inv" + fruit].pop();
     console.log(fruit + " inventory after .pop", user["inv" + fruit]);
-    // user.totalCash += price;
+    user.totalCash += price;
   } else {
-    alert("You have no " + fruit + " left to sell.");
+    return alert("You have no " + fruit + " left to sell.");
   }
-  user.totalCash += price;
+  // user.totalCash += price;
   document.getElementById("userContainer").innerHTML = user.totalCash.toFixed(2);
   console.log(fruit, price);
   console.log("user after selling ", user);
