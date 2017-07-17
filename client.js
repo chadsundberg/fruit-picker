@@ -131,9 +131,7 @@ function disable(){
 function sellFruit(){ // create a way to average price of fruit sold
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
-  // console.log("The sell price of " + fruit + " is " + price);
   if (user["inv" + fruit].length > 0 ) {
-    // console.log(fruit + " inventory before .pop ", user["inv" + fruit]);
     user["inv" + fruit].pop();
     console.log(fruit + " inventory after .pop", user["inv" + fruit]);
     user.totalCash += price;
