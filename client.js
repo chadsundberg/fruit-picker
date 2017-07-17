@@ -82,6 +82,7 @@ function buildFruits(array){ // first function called in init(), it takes in the
     array[i] = newFruit;
     newFruit.changePrice();
     user["inv" + newFruit.name] = [];
+    // user["purchaseprices" + newFruit.price] = [];
   }
   console.log(user);
 }
@@ -150,8 +151,10 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     console.log(user);
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+    averagePurchasePrice();
   }
   totalCashMade();
+
 }
 
 function gameInterval(){
@@ -174,6 +177,15 @@ function totalCashMade(){
   var profit = user.totalCash.toFixed(2) - startingCash;
   $('#profitContainer').last().empty();
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
+}
+
+function averagePurchasePrice(User){ // working out price averaging function
+  var totalFruitInvestment = 0;
+  for (var i = 0; i < user["inv" + fruit].length; i++){
+     totalFruitInvestment += user["inv" + fruit][i];
+     $('#aveContainer').empty();
+    $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
+  }
 }
 
 // Utility functions
