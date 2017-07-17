@@ -151,7 +151,7 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     console.log(user);
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-    averagePurchasePrice();
+    // averagePurchasePrice();
   }
   totalCashMade();
 
