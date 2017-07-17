@@ -42,12 +42,13 @@ function Fruit(name, price) { // object constructor assigning name and price, an
   this.name = name;
   this.price = price;
   this.changePrice = function(){
-    var priceSwing = randomNumber(minSwing, maxSwing).toFixed(2);
+    var priceSwing = randomNumber(minSwing, maxSwing);
     var randomAdjustment = randomNumber(1,2);
     if(randomAdjustment == 1){
       priceSwing = -priceSwing;
-    }
+    } else {
     priceSwing = priceSwing - minSwing;
+  }
     this.price += priceSwing;
     (this.price).toFixed(2);
     if (this.price > maxPrice) {
