@@ -81,7 +81,7 @@ function buildFruits(array){ // first function called in init(), it takes in the
     var newFruit = new Fruit(array[i], startingPrice);
     array[i] = newFruit;
     newFruit.changePrice();
-    user["inv" + newFruit.name] = [];
+    user[newFruit.name] = [];
     // user["purchaseprices" + newFruit.price] = [];
   }
   console.log(user);
@@ -128,8 +128,8 @@ function disable(){
 function sellFruit(){ // create a way to average price of fruit sold
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
-  if (user["inv" + fruit].length > 0 ) {
-    user["inv" + fruit].pop();
+  if (user[fruit].length > 0 ) {
+    user[fruit].pop();
     console.log(fruit + " inventory after .pop", user["inv" + fruit]);
     user.totalCash += price;
   } else {
@@ -146,12 +146,12 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
   if(user.totalCash >= price){
-    user["inv" + fruit].push(price);
+    user[fruit].push(price);
     user.totalCash -= price;
     console.log(user);
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-    // averagePurchasePrice();
+    averagePurchasePrice();
   }
   totalCashMade();
 
@@ -163,6 +163,7 @@ function gameInterval(){
   }
   updateFruitDom();
   buildSellButtons();
+  // averagePurchasePrice();
 }
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
@@ -179,10 +180,12 @@ function totalCashMade(){
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
-function averagePurchasePrice(User){ // working out price averaging function
-  var totalFruitInvestment = 0;
-  for (var i = 0; i < user["inv" + fruit].length; i++){
-     totalFruitInvestment += user["inv" + fruit][i];
+function averagePurchasePrice(User, fruit){ // working out price averaging function
+
+  for (var i = 0; i < user[fruit].length; i++){
+    var totalFruitInvestment = 0;
+     totalFruitInvestment += user[fruit[i]].sum();
+     console.log(totalFruitInvestment);
      $('#aveContainer').empty();
     $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
   }
