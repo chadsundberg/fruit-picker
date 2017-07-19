@@ -97,7 +97,9 @@ function buildDomFruits(array){ // This is the second function called in init().
     $el.addClass(array[i].name);
     array[i].element = $el;
     var avePurchasePrice = 0;
+    var fruitInventory = 0;
     $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Ave. Purchase Price: $" + avePurchasePrice.toFixed(2) + "</div>");
+    $('#invContainer').first().append("<div class=invFruit" + array[i].name + ">Inventory: " + array[i].name + " " + fruitInventory + "</div>");
   }
   buildSellButtons();
   totalCashMade();
@@ -154,6 +156,9 @@ function sellFruit(){ // create a way to average price of fruit sold
   }
   $('.avePrice' + fruit).last().empty();
   $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+  var fruitInventory = user[fruit].length;
+  $('.invFruit' + fruit).last().empty();
+  $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
   totalCashMade();
 }
 
@@ -178,9 +183,11 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     $('.avePrice' + fruit).last().empty();
     // $('.avePrice' + fruit).append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
     $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-    // averagePurchasePrice();
+    var fruitInventory = user[fruit].length;
+    $('.invFruit' + fruit).last().empty();
+    $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
   }
-  // averagePurchasePrice(fruit);
+
   totalCashMade();
 }
 

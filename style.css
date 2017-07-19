@@ -34,6 +34,13 @@
   margin-left: 20px;
 }
 
+.invFruitapples, .invFruitoranges, .invFruitbananas, .invFruitgrapes {
+  display: inline-block;
+  margin: 10px;
+  width: 200px;
+  margin-left: 20px;
+}
+
 
 
 #userContainer {
