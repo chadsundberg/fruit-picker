@@ -29,7 +29,7 @@
 // Try your hand at styling everything using CSS!
 
 var fruitArray = ['apples', 'oranges', 'bananas', 'grapes'];
-var startingPrice = 5.00; // whole numbers = dollarz
+var startingPrice = 5.00;
 var minSwing = 0.03;
 var maxSwing = 1.97;
 var minPrice = 0.50;
@@ -70,6 +70,15 @@ $(document).ready(function(){
 });
 
 function init() { // the init function is a string of other functions
+  $('.fruit-button').on('click', function (){
+    var startTime = 600;
+    $('#time').text(startTime);
+    if (startTime == 0) {
+      sellFruit();
+    }
+  });
+
+  // $('#starttimer').on('click', function(){
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
