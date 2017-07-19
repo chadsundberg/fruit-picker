@@ -182,7 +182,7 @@ function updateFruitDom(){ // this function updates prices of fruit on the DOM
   }
 }
 
-function totalCashMade(){
+function totalCashMade(){ // calculates a live amount of profit
   var profit = user.totalCash.toFixed(2) - startingCash;
   $('#profitContainer').last().empty();
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
