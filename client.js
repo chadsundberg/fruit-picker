@@ -96,7 +96,8 @@ function buildDomFruits(array){ // This is the second function called in init().
     $el.append("<p class='fruit-price'> $" + array[i].price.toFixed(2) + '</p>');
     $el.addClass(array[i].name);
     array[i].element = $el;
-    $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Ave. Purchase Price: $</div>");
+    var avePurchasePrice = 0;
+    $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Ave. Purchase Price: $" + avePurchasePrice.toFixed(2) + "</div>");
   }
   buildSellButtons();
   totalCashMade();
@@ -131,15 +132,28 @@ function sellFruit(){ // create a way to average price of fruit sold
   var price = $(this).data("price");
   if (user[fruit].length > 0 ) {
     user[fruit].pop();
-    console.log(fruit + " inventory after .pop", user["inv" + fruit]);
+    console.log(fruit + " inventory after .pop", user[fruit]);
     user.totalCash += price;
   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
   $('#userContainer').first().empty();
   $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-  console.log(fruit, price);
-  console.log("user after selling ", user);
+  // console.log(fruit, price);
+  // console.log("user after selling ", user);
+  console.log(user[fruit].length);
+  var totalFruitInvestment = 0;
+  for (var i = 0; i < user[fruit].length; i++){
+    // console.log(user[fruit][i]);
+    var priceNumber = Number(user[fruit][i]);
+    totalFruitInvestment += priceNumber;
+  }
+  var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+  if (user[fruit].length == 0) {
+    avePurchasePrice = 0;
+  }
+  $('.avePrice' + fruit).last().empty();
+  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
   totalCashMade();
 }
 
