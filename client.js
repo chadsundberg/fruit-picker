@@ -206,17 +206,6 @@ function totalCashMade(){
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
-// function averagePurchasePrice(User, fruit){ // working out price averaging function
-//
-//   for (var i = 0; i < user[fruit].length; i++){
-//     var totalFruitInvestment = 0;
-//      totalFruitInvestment += user[fruit[i]].sum();
-//      console.log(totalFruitInvestment);
-//      $('#aveContainer').empty();
-//     $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
-//   }
-// }
-
 // Utility functions
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (1 + max - min) + min);
