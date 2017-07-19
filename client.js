@@ -96,6 +96,7 @@ function buildDomFruits(array){ // This is the second function called in init().
     $el.append("<p class='fruit-price'> $" + array[i].price.toFixed(2) + '</p>');
     $el.addClass(array[i].name);
     array[i].element = $el;
+    $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Ave. Purchase Price: $</div>");
   }
   buildSellButtons();
   totalCashMade();
@@ -117,6 +118,7 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
 function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
+
   setInterval(gameInterval, gameIntervalTime);
 }
 
@@ -159,9 +161,12 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     }
     var avePurchasePrice = totalFruitInvestment / user[fruit].length;
     console.log(totalFruitInvestment);
-    $('#aveContainer').empty();
-    $('#aveContainer').append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
+    $('.avePrice' + fruit).last().empty();
+    // $('.avePrice' + fruit).append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
+    $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+    // averagePurchasePrice();
   }
+  // averagePurchasePrice(fruit);
   totalCashMade();
 }
 
@@ -187,6 +192,21 @@ function totalCashMade(){ // calculates a live amount of profit
   $('#profitContainer').last().empty();
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
+
+// function averagePurchasePrice(){
+//   var fruit = $(this).data("fruit");
+//   console.log(user[fruit].length);
+//   var totalFruitInvestment = 0;
+//   for (var i = 0; i < user[fruit].length; i++){
+//     console.log(user[fruit][i]);
+//     var priceNumber = Number(user[fruit][i]);
+//     totalFruitInvestment += priceNumber;
+//   }
+//   var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+//   console.log(totalFruitInvestment);
+//   $('#aveContainer').empty();
+//   $('#aveContainer').append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
+// }
 
 // Utility functions
 function randomNumber(min, max) {
