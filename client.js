@@ -129,7 +129,7 @@ function disable(){
   clearInterval(gameInterval);
 }
 
-function sellFruit(){ // create a way to average price of fruit sold
+function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
   if (user[fruit].length > 0 ) {
@@ -141,12 +141,9 @@ function sellFruit(){ // create a way to average price of fruit sold
   }
   $('#userContainer').first().empty();
   $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-  // console.log(fruit, price);
-  // console.log("user after selling ", user);
   console.log(user[fruit].length);
   var totalFruitInvestment = 0;
   for (var i = 0; i < user[fruit].length; i++){
-    // console.log(user[fruit][i]);
     var priceNumber = Number(user[fruit][i]);
     totalFruitInvestment += priceNumber;
   }
@@ -162,7 +159,7 @@ function sellFruit(){ // create a way to average price of fruit sold
   totalCashMade();
 }
 
-function clickFruit(){ // need to add in code that averages price of fruit purchased
+function clickFruit(){ // this function is the logic that allows a user to purchase fruit, get an average price purchased, and an inventory number
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
   if(user.totalCash >= price){
@@ -181,13 +178,11 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     var avePurchasePrice = totalFruitInvestment / user[fruit].length;
     console.log(totalFruitInvestment);
     $('.avePrice' + fruit).last().empty();
-    // $('.avePrice' + fruit).append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
     $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
     var fruitInventory = user[fruit].length;
     $('.invFruit' + fruit).last().empty();
     $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
   }
-
   totalCashMade();
 }
 
@@ -197,7 +192,6 @@ function gameInterval(){
   }
   updateFruitDom();
   buildSellButtons();
-  // averagePurchasePrice();
 }
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
@@ -213,21 +207,6 @@ function totalCashMade(){ // calculates a live amount of profit
   $('#profitContainer').last().empty();
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
-
-// function averagePurchasePrice(){
-//   var fruit = $(this).data("fruit");
-//   console.log(user[fruit].length);
-//   var totalFruitInvestment = 0;
-//   for (var i = 0; i < user[fruit].length; i++){
-//     console.log(user[fruit][i]);
-//     var priceNumber = Number(user[fruit][i]);
-//     totalFruitInvestment += priceNumber;
-//   }
-//   var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-//   console.log(totalFruitInvestment);
-//   $('#aveContainer').empty();
-//   $('#aveContainer').append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
-// }
 
 // Utility functions
 function randomNumber(min, max) {
