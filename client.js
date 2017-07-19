@@ -83,9 +83,22 @@ function buildFruits(array){ // first function called in init(), it takes in the
     newFruit.changePrice();
     user[newFruit.name] = [];
     // user["purchaseprices" + newFruit.price] = [];
+    // console.log(user[fruit][i]);
   }
   console.log(user);
+  // console.log(user[fruit][i]);
+  // console.log(user.fruit);
 }
+
+// for (var i = 0; i < user[fruit].length; i++){
+//     var totalFruitInvestment = 0;
+//      totalFruitInvestment += user[fruit[i]].sum();
+//      console.log(totalFruitInvestment);
+//      $('#aveContainer').empty();
+//     $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
+//   }
+
+
 
 function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
   for (var i = 0; i < array.length; i++) {
@@ -151,7 +164,20 @@ function clickFruit(){ // need to add in code that averages price of fruit purch
     console.log(user);
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-    averagePurchasePrice();
+    // averagePurchasePrice();
+    console.log(user[fruit].length);
+    var totalFruitInvestment = 0;
+    for (var i = 0; i < user[fruit].length; i++){
+      console.log(user[fruit][i]);
+        // var totalFruitInvestment = 0;
+        var priceNumber = Number(user[fruit][i]);
+         totalFruitInvestment += priceNumber;
+       }
+       var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+         console.log(totalFruitInvestment);
+        $('#aveContainer').empty();
+        $('#aveContainer').append(fruit + ' investment: $' + totalFruitInvestment.toFixed(2) + ' for an average purchase price of $' + avePurchasePrice.toFixed(2));
+
   }
   totalCashMade();
 
@@ -180,16 +206,16 @@ function totalCashMade(){
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
-function averagePurchasePrice(User, fruit){ // working out price averaging function
-
-  for (var i = 0; i < user[fruit].length; i++){
-    var totalFruitInvestment = 0;
-     totalFruitInvestment += user[fruit[i]].sum();
-     console.log(totalFruitInvestment);
-     $('#aveContainer').empty();
-    $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
-  }
-}
+// function averagePurchasePrice(User, fruit){ // working out price averaging function
+//
+//   for (var i = 0; i < user[fruit].length; i++){
+//     var totalFruitInvestment = 0;
+//      totalFruitInvestment += user[fruit[i]].sum();
+//      console.log(totalFruitInvestment);
+//      $('#aveContainer').empty();
+//     $('#aveContainer').append(fruit + ' Investment: $' + totalFruitInvestment);
+//   }
+// }
 
 // Utility functions
 function randomNumber(min, max) {
