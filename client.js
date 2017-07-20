@@ -37,6 +37,7 @@ var maxPrice = 9.99;
 var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
+var startTime = 60000;
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
@@ -70,15 +71,7 @@ $(document).ready(function(){
 });
 
 function init() { // the init function is a string of other functions
-  $('.fruit-button').on('click', function (){
-    var startTime = 600;
-    $('#time').text(startTime);
-    if (startTime == 0) {
-      sellFruit();
-    }
-  });
-
-  // $('#starttimer').on('click', function(){
+  startTimer();
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
@@ -131,7 +124,7 @@ function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
 
-  setInterval(gameInterval, gameIntervalTime);
+  setInterval(gameInterval, gameIntervalTime); // connect game interval to timer with minutes and seconds
 }
 
 function disable(){
@@ -177,6 +170,7 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     console.log(user);
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+  }
     console.log(user[fruit].length);
     var totalFruitInvestment = 0;
     for (var i = 0; i < user[fruit].length; i++){
@@ -191,7 +185,6 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     var fruitInventory = user[fruit].length;
     $('.invFruit' + fruit).last().empty();
     $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
-  }
   totalCashMade();
 }
 
@@ -215,6 +208,22 @@ function totalCashMade(){ // calculates a live amount of profit
   var profit = user.totalCash.toFixed(2) - startingCash;
   $('#profitContainer').last().empty();
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
+}
+
+function startTimer(){
+  var counter = 300;
+  setInterval(function() {
+    counter--;
+    if (counter >= 0) {
+      span = document.getElementById("time");
+      span.innerHTML = counter;
+    }
+    if (counter === 0) {
+        alert('sorry, out of time');
+        clearInterval(counter);
+        // sellFruit();
+    }
+  }, 1000);
 }
 
 // Utility functions
