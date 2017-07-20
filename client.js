@@ -71,7 +71,7 @@ $(document).ready(function(){
 });
 
 function init() { // the init function is a string of other functions
-  startTimer();
+  // startTimer();
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
@@ -210,21 +210,87 @@ function totalCashMade(){ // calculates a live amount of profit
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
-function startTimer(){
-  var counter = 300;
-  setInterval(function() {
-    counter--;
-    if (counter >= 0) {
-      span = document.getElementById("time");
-      span.innerHTML = counter;
-    }
-    if (counter === 0) {
-        alert('sorry, out of time');
-        clearInterval(counter);
-        // sellFruit();
-    }
-  }, 1000);
+// function startTimer(){ // this works but no minutes yet
+//   var counter = 300;
+//   setInterval(function() {
+//     counter--;
+//     if (counter >= 0) {
+//       span = document.getElementById("time");
+//       span.innerHTML = counter;
+//     }
+//     if (counter === 0) {
+//         alert('sorry, out of time');
+//         clearInterval(counter);
+//         // sellFruit();
+//     }
+//   }, 1000);
+// }
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = "Game ends in " + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+
+
+// function getTimeRemaining(endtime) { // this was a rabbit hole
+//   // var t = Date.parse(endtime) - Date.parse(new Date());
+//   var seconds = Math.floor((t / 1000) % 60);
+//   var minutes = Math.floor((60000 / 1000 / 60) % 60);
+//   // var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+//   // var days = Math.floor(t / (1000 * 60 * 60 * 24));
+//   return {
+//     // 'total': t,
+//     // 'days': days,
+//     // 'hours': hours,
+//     'minutes': minutes,
+//     'seconds': seconds
+//   };
+// }
+//
+// function initializeClock(time, endtime) {
+//   var clock = document.getElementById('time');
+//   // var daysSpan = clock.querySelector('.days');
+//   // var hoursSpan = clock.querySelector('.hours');
+//   var minutesSpan = clock.querySelector('.minutes');
+//   var secondsSpan = clock.querySelector('.seconds');
+//
+//   function updateClock() {
+//     var t = getTimeRemaining(endtime);
+//
+//     // daysSpan.innerHTML = t.days;
+//     // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+//     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+//     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+//
+//     if (t.total <= 0) {
+//       clearInterval(timeinterval);
+//     }
+//   }
+//
+//   updateClock();
+//   var timeinterval = setInterval(updateClock, 1000);
+// }
+//
+// var deadline = new Date(Date.parse(new Date()) + 0 * 0 * 5 * 60 * 1000);
+// initializeClock('time', deadline);
 
 // Utility functions
 function randomNumber(min, max) {
