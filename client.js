@@ -210,7 +210,7 @@ function totalCashMade(){ // calculates a live amount of profit
   $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
 }
 
-function startTimer(duration, display) { // displays game timer // todo - get end of game to sell all fruit at current market price
+function startTimer(duration, display) { // displays game timer // todo - get end of game to sell all fruit at current market price, stop prices from changing, and stop timer from resetting
   var timer = duration, minutes, seconds;
   setInterval(function () {
     minutes = parseInt(timer / 60, 10)
