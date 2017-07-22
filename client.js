@@ -217,7 +217,7 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     seconds = parseInt(timer % 60, 10);
     minutes = minutes < 10 ? minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-    display.textContent = "Game ends in " + minutes + ":" + seconds;
+    display.textContent = minutes + ":" + seconds;
 
     if (--timer < 0) {
       timer = duration;

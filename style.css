@@ -79,3 +79,8 @@ html {
   height: 50px;
   margin: 30px 50px 10px 30px;
 }
+
+#time {
+ font-family:'Orbitron', sans-serif;
+ src: url('put_the_location_to_your_font.ttf or .otf');
+}
