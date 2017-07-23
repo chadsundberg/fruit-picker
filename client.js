@@ -219,11 +219,16 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
 
-    if (--timer < 0) {
-      timer = duration;
+    if (--timer == 0) {
+      stopTimer
     }
-  }, 1000);
+    // } else if (--timer < 0) {
+    //   timer = duration;
+    // }
+  }, 10);
 }
+
+function stopTimer()
 
 window.onload = function () {
   var fiveMinutes = 60 * 5,
