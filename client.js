@@ -220,15 +220,15 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     display.textContent = minutes + ":" + seconds;
 
     if (--timer == 0) {
-      stopTimer
+      clearInterval(fiveMinutes);
     }
-    // } else if (--timer < 0) {
+    // else if (--timer > 0) {
     //   timer = duration;
     // }
   }, 10);
 }
 
-function stopTimer()
+// function stopTimer()
 
 window.onload = function () {
   var fiveMinutes = 60 * 5,
