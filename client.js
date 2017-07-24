@@ -128,7 +128,7 @@ function enable(){
 }
 
 function disable(){
-  clearInterval(gameInterval);
+  clearInterval(gameInterval, gameIntervalTime);
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -219,8 +219,11 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
 
-    if (--timer == 0) {
-      clearInterval(fiveMinutes);
+    if (--timer <= 0) {
+      // duration = 0;
+      // timer = duration;
+      display.textContent = "Game Over";
+      disable();
     }
     // else if (--timer > 0) {
     //   timer = duration;
