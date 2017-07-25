@@ -37,7 +37,7 @@ var maxPrice = 9.99;
 var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
-var startTime = 60000;
+var startTime = 300;
 var myGame = setInterval(gameInterval, gameIntervalTime);
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
@@ -125,7 +125,9 @@ function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
 
-  var myGame; // connect game interval to timer with minutes and seconds
+  // setInterval(gameInterval, gameIntervalTime);
+
+  myGame(); // connect game interval to timer with minutes and seconds
 }
 
 function disable(){
@@ -231,15 +233,15 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     // else if (--timer > 0) {
     //   timer = duration;
     // }
-  }, 10);
+  }, 1000);
 }
 
 // function stopTimer()
 
 window.onload = function () {
-  var fiveMinutes = 60 * 5,
+  // var fiveMinutes = 60 * 5,
   display = document.querySelector('#time');
-  startTimer(fiveMinutes, display);
+  startTimer(startTime, display);
 };
 
 // Utility functions
