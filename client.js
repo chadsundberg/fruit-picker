@@ -131,8 +131,8 @@ function enable(){
 }
 
 function disable(){
-  clearInterval(myGame);
   finalSale(fruitArray);
+  clearInterval(myGame);
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -230,7 +230,6 @@ function startTimer(duration, display) { // displays game timer // todo - get en
       clearInterval(myTimer);
       disable();
     }
-
   }, 100);
 }
 
@@ -244,11 +243,12 @@ function finalSale(array){ // this function is the logic that allows a user to s
   var fruit = $('.sell-button').data("fruit");
   var price = $('.sell-button').data("price");
   for (var i = 0; i < array.length; i++) {
+    // var fruit = array[i];
   if (user[fruit].length > 0 ) {
     user[fruit].pop();
     console.log(fruit + " inventory after .pop", user[fruit]);
     user.totalCash += price;
-  } else {
+   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
   $('#userContainer').first().empty();
