@@ -38,6 +38,7 @@ var gameIntervalTime = 2000;
 var startingCash = 100;
 var user;
 var startTime = 60000;
+var myGame = setInterval(gameInterval, gameIntervalTime);
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
@@ -124,11 +125,11 @@ function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
 
-  setInterval(gameInterval, gameIntervalTime); // connect game interval to timer with minutes and seconds
+  var myGame; // connect game interval to timer with minutes and seconds
 }
 
 function disable(){
-  clearInterval(gameInterval, gameIntervalTime);
+  clearInterval(myGame);
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -212,19 +213,21 @@ function totalCashMade(){ // calculates a live amount of profit
 
 function startTimer(duration, display) { // displays game timer // todo - get end of game to sell all fruit at current market price, stop prices from changing, and stop timer from resetting
   var timer = duration, minutes, seconds;
-  setInterval(function () {
+  var myTimer = setInterval(function () {
     minutes = parseInt(timer / 60, 10)
     seconds = parseInt(timer % 60, 10);
     minutes = minutes < 10 ? minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
 
-    if (--timer <= 0) {
+    if (--timer < 0) {
       // duration = 0;
       // timer = duration;
       display.textContent = "Game Over";
+      clearInterval(myTimer);
       disable();
     }
+    // disable();
     // else if (--timer > 0) {
     //   timer = duration;
     // }
