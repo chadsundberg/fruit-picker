@@ -225,8 +225,6 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     display.textContent = minutes + ":" + seconds;
 
     if (--timer < 0) {
-      // duration = 0;
-      // timer = duration;
       display.textContent = "Game Over";
       clearInterval(myTimer);
       disable();
