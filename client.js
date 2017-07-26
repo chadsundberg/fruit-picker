@@ -131,8 +131,9 @@ function enable(){
 }
 
 function disable(){
-  finalSale(fruitArray);
+
   clearInterval(myGame);
+  finalSale(fruitArray);
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -240,35 +241,55 @@ window.onload = function () {
 };
 
 function finalSale(array){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
-  var fruit = $('.sell-button').data("fruit");
+  // var fruit = $('.sell-button').data("fruit");
   var price = $('.sell-button').data("price");
   for (var i = 0; i < array.length; i++) {
-    // var fruit = array[i];
-  if (user[fruit].length > 0 ) {
+    var fruit = array[i].name;
+    console.log(fruit);
+  while (user[fruit].length > 0 ) {
     user[fruit].pop();
     console.log(fruit + " inventory after .pop", user[fruit]);
     user.totalCash += price;
-   } else {
-    return alert("You have no " + fruit + " left to sell.");
-  }
-  $('#userContainer').first().empty();
-  $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-  console.log(user[fruit].length);
-  var totalFruitInvestment = 0;
-  for (var i = 0; i < user[fruit].length; i++){
-    var priceNumber = Number(user[fruit][i]);
-    totalFruitInvestment += priceNumber;
-  }
-  var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-  if (user[fruit].length == 0) {
-    avePurchasePrice = 0;
-  }
-  $('.avePrice' + fruit).last().empty();
-  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-  var fruitInventory = user[fruit].length;
-  $('.invFruit' + fruit).last().empty();
-  $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
-  totalCashMade();
+    $('#userContainer').first().empty();
+    $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+    console.log(user[fruit].length);
+    var totalFruitInvestment = 0;
+    for (var i = 0; i < user[fruit].length; i++){
+      var priceNumber = Number(user[fruit][i]);
+      totalFruitInvestment += priceNumber;
+    }
+    var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+    if (user[fruit].length == 0) {
+      avePurchasePrice = 0;
+    }
+    $('.avePrice' + fruit).last().empty();
+    $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+    var fruitInventory = user[fruit].length;
+    $('.invFruit' + fruit).last().empty();
+    $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+    totalCashMade();
+   }
+  //  else {
+  //   return;
+  // }
+  // $('#userContainer').first().empty();
+  // $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+  // console.log(user[fruit].length);
+  // var totalFruitInvestment = 0;
+  // for (var i = 0; i < user[fruit].length; i++){
+  //   var priceNumber = Number(user[fruit][i]);
+  //   totalFruitInvestment += priceNumber;
+  // }
+  // var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+  // if (user[fruit].length == 0) {
+  //   avePurchasePrice = 0;
+  // }
+  // $('.avePrice' + fruit).last().empty();
+  // $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+  // var fruitInventory = user[fruit].length;
+  // $('.invFruit' + fruit).last().empty();
+  // $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+  // totalCashMade();
   }
 }
 
