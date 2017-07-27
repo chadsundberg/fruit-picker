@@ -34,11 +34,11 @@ var minSwing = 0.01;
 var maxSwing = 0.50;
 var minPrice = 0.50;
 var maxPrice = 9.99;
-var gameIntervalTime = 15000; // prices change every 15 seconds
+var gameIntervalTime = 2000; // prices change every 15 seconds
 var startingCash = 100;
 var user;
-var startTime = 300;
-var myGame = setInterval(gameInterval, gameIntervalTime);
+var startTime = 299;
+var fullGame = setInterval(gameInterval, gameIntervalTime);
 
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
@@ -68,16 +68,16 @@ function User(){ // sets a user with starting cash to play the game and is used 
 }
 
 $(document).ready(function(){
+  // myGame();
   init(); // the entire game runs within this function
 });
 
 function init() { // the init function is a string of other functions
-  // startTimer();
   user = new User();
   buildFruits(fruitArray);
   buildDomFruits(fruitArray);
   enable();
-  myGame;
+  myGame();
 }
 
 function buildFruits(array){ // first function called in init(), it takes in the fruit array and adds name and price to new fruit objects
@@ -126,11 +126,21 @@ function enable(){ // this function enables the game
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
   //myGame; // connect game interval to timer with minutes and seconds
+  // setInterval(gameInterval, gameIntervalTime);
+  fullGame;
 }
 
 function disable(){
-  clearInterval(myGame);
+  clearInterval(fullGame);
   finalSale(fruitArray);
+}
+
+function gameInterval(){
+  for (var i = 0; i < fruitArray.length; i++) {
+    fruitArray[i].changePrice(); // creates changing prices for each fruit
+  }
+  updateFruitDom();
+  buildSellButtons();
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -191,13 +201,7 @@ function clickFruit(){ // this function is the logic that allows a user to purch
   totalCashMade();
 }
 
-function gameInterval(){
-  for (var i = 0; i < fruitArray.length; i++) {
-    fruitArray[i].changePrice(); // creates changing prices for each fruit
-  }
-  updateFruitDom();
-  buildSellButtons();
-}
+
 
 function updateFruitDom(){ // this function updates prices of fruit on the DOM
   for (var i = 0; i < fruitArray.length; i++) {
@@ -226,14 +230,14 @@ function startTimer(duration, display) { // displays game timer // todo - get en
       clearInterval(myTimer);
       disable();
     }
-  }, 1000);
+  }, 100);
 }
 
-window.onload = function () {
+function myGame() {
   display = document.querySelector('#time');
   startTimer(startTime, display);
   // myGame;
-};
+}
 
 function finalSale(array){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
   for (var i = 0; i < array.length; i++) {
