@@ -124,14 +124,10 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
 function enable(){
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
-
-  // setInterval(gameInterval, gameIntervalTime);
-
   myGame; // connect game interval to timer with minutes and seconds
 }
 
 function disable(){
-
   clearInterval(myGame);
   finalSale(fruitArray);
 }
@@ -224,7 +220,6 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     minutes = minutes < 10 ? minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
-
     if (--timer < 0) {
       display.textContent = "Game Over";
       clearInterval(myTimer);
