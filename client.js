@@ -229,7 +229,7 @@ function startTimer(duration, display) { // displays game timer // todo - get en
       clearInterval(myTimer);
       disable();
     }
-  }, 100);
+  }, 1000);
 }
 
 function myGame() { // this function encapsulates the digital clock on the DOM and uses startTimer() to update the display
