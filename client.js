@@ -234,21 +234,14 @@ function startTimer(duration, display) { // displays game timer // todo - get en
 }
 
 window.onload = function () {
-  // var fiveMinutes = 60 * 5,
   display = document.querySelector('#time');
   startTimer(startTime, display);
 };
 
 function finalSale(array){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
-  // var fruit = $('.sell-button').data("fruit");
-  // var price = $('.fruit-button').data("price");
-  // var price = $(this).data("price");
   for (var i = 0; i < array.length; i++) {
     var fruit = array[i].name;
     var price = array[i].price;
-    // var price = $(this).data("price");
-    // var price = fruit.price;
-    // var price = $('.fruit-button').data("price"); // this just gives me the price of the first fruit in the array, not any other
     console.log(fruit);
     console.log(user[fruit]);
   while (user[fruit].length > 0 ) {
