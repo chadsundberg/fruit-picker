@@ -34,7 +34,7 @@ var minSwing = 0.01;
 var maxSwing = 0.50;
 var minPrice = 0.50;
 var maxPrice = 9.99;
-var gameIntervalTime = 2000; // prices change every 15 seconds
+var gameIntervalTime = 15000; // prices change every 15 seconds
 var startingCash = 100;
 var user;
 var startTime = 299;
@@ -43,7 +43,7 @@ var fullGame = setInterval(gameInterval, gameIntervalTime);
 function Fruit(name, price) { // object constructor assigning name and price, and price change function to each fruit
   this.name = name;
   this.price = price;
-  this.changePrice = function(){
+  this.changePrice = function(){ // this changes the price of each fruit in the array
     var priceSwing = randomNumber(minSwing, maxSwing);
     var randomAdjustment = randomNumber(1,2);
     if(randomAdjustment == 1){
@@ -68,7 +68,6 @@ function User(){ // sets a user with starting cash to play the game and is used 
 }
 
 $(document).ready(function(){
-  // myGame();
   init(); // the entire game runs within this function
 });
 
@@ -125,17 +124,17 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
 function enable(){ // this function enables the game
   $("#fruitContainer").on('click', '.fruit-button', clickFruit);
   $("#sellContainer").on('click', '.sell-button', sellFruit);
-  //myGame; // connect game interval to timer with minutes and seconds
-  // setInterval(gameInterval, gameIntervalTime);
   fullGame;
 }
 
-function disable(){
+function disable(){ // this function ends the game and stops prices from changing
+  $("#fruitContainer").off('click');
+  $("#sellContainer").off('click');
   clearInterval(fullGame);
   finalSale(fruitArray);
 }
 
-function gameInterval(){
+function gameInterval(){ // this function runs the price changes every 15 seconds
   for (var i = 0; i < fruitArray.length; i++) {
     fruitArray[i].changePrice(); // creates changing prices for each fruit
   }
@@ -233,10 +232,9 @@ function startTimer(duration, display) { // displays game timer // todo - get en
   }, 100);
 }
 
-function myGame() {
+function myGame() { // this function encapsulates the digital clock on the DOM and uses startTimer() to update the display
   display = document.querySelector('#time');
   startTimer(startTime, display);
-  // myGame;
 }
 
 function finalSale(array){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -245,34 +243,34 @@ function finalSale(array){ // this function is the logic that allows a user to s
     var price = array[i].price;
     console.log(fruit);
     console.log(user[fruit]);
-  while (user[fruit].length > 0 ) {
-    user[fruit].pop();
-    console.log(fruit + " inventory after .pop", user[fruit]);
-    user.totalCash += Number(price);
-    console.log(fruit + " sale price on final sale: " + price);
-    $('#userContainer').first().empty();
-    $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-    console.log(user[fruit].length);
-    var totalFruitInvestment = 0;
-    for (var i = 0; i < user[fruit].length; i++){
-      var priceNumber = Number(user[fruit][i]);
-      totalFruitInvestment += priceNumber;
+    while (user[fruit].length > 0 ) {
+      user[fruit].pop();
+      console.log(fruit + " inventory after .pop", user[fruit]);
+      user.totalCash += Number(price);
+      console.log(fruit + " sale price on final sale: " + price);
+      $('#userContainer').first().empty();
+      $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+      console.log(user[fruit].length);
+      var totalFruitInvestment = 0;
+      for (var i = 0; i < user[fruit].length; i++){
+        var priceNumber = Number(user[fruit][i]);
+        totalFruitInvestment += priceNumber;
+      }
+      var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+      if (user[fruit].length == 0) {
+        avePurchasePrice = 0;
+      }
+      $('.avePrice' + fruit).last().empty();
+      $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+      var fruitInventory = user[fruit].length;
+      $('.invFruit' + fruit).last().empty();
+      $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+      totalCashMade();
     }
-    var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-    if (user[fruit].length == 0) {
-      avePurchasePrice = 0;
-    }
-    $('.avePrice' + fruit).last().empty();
-    $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-    var fruitInventory = user[fruit].length;
-    $('.invFruit' + fruit).last().empty();
-    $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
-    totalCashMade();
-   }
   }
 }
 
 // Utility functions
-function randomNumber(min, max) {
+function randomNumber(min, max) { // this function generates random numbers and is used in the priceChange function
   return Math.floor(Math.random() * (1 + max - min) + min);
 }
