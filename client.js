@@ -163,6 +163,7 @@ function sellFruit(){ // this function is the logic that allows a user to sell f
 function clickFruit(){ // this function is the logic that allows a user to purchase fruit, get an average price purchased, and an inventory number
   var fruit = $(this).data("fruit");
   var price = $(this).data("price");
+  console.log(user);
   if(user.totalCash >= price){
     user[fruit].push(price);
     user.totalCash -= price;
