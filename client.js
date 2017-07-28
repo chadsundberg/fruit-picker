@@ -222,7 +222,8 @@ function startTimer(duration, display) { // displays game timer // todo - get en
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;
     if (--timer < 0) {
-      display.textContent = "Game Over";
+      $('.time').empty();
+      $('.time').append("<div>Game Over</div>");
       clearInterval(myTimer);
       disable();
     }
