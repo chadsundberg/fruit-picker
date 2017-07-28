@@ -155,21 +155,8 @@ function sellFruit(){ // this function is the logic that allows a user to sell f
   }
   $('#userContainer').first().empty();
   $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
-  console.log(user[fruit].length);
-  var totalFruitInvestment = 0;
-  for (var i = 0; i < user[fruit].length; i++){
-    var priceNumber = Number(user[fruit][i]);
-    totalFruitInvestment += priceNumber;
-  }
-  var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-  if (user[fruit].length == 0) {
-    avePurchasePrice = 0;
-  }
-  $('.avePrice' + fruit).last().empty();
-  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-  var fruitInventory = user[fruit].length;
-  $('.invFruit' + fruit).last().empty();
-  $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+  averagePurchasePrice(fruit);
+  updateFruitInventory(fruit);
   totalCashMade();
 }
 
@@ -183,20 +170,8 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     $('#userContainer').first().empty();
     $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
   }
-  console.log(user[fruit].length);
-  var totalFruitInvestment = 0;
-  for (var i = 0; i < user[fruit].length; i++){
-    console.log(user[fruit][i]);
-    var priceNumber = Number(user[fruit][i]);
-    totalFruitInvestment += priceNumber;
-  }
-  var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-  console.log(totalFruitInvestment);
-  $('.avePrice' + fruit).last().empty();
-  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-  var fruitInventory = user[fruit].length;
-  $('.invFruit' + fruit).last().empty();
-  $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+  averagePurchasePrice(fruit);
+  updateFruitInventory(fruit);
   totalCashMade();
 }
 
@@ -208,6 +183,28 @@ function updateFruitDom(){ // this function updates prices of fruit on the DOM
     fruit.element.find(".fruit-price").text("$" + fruit.price.toFixed(2));
     fruit.element.data("price", fruit.price.toFixed(2));
   }
+}
+
+function averagePurchasePrice(fruit){ // this function averages the price of all fruits in inventory of a given type
+  console.log(user);
+  console.log(user[fruit]);
+  var totalFruitInvestment = 0;
+  for (var i = 0; i < user[fruit].length; i++){
+    var priceNumber = Number(user[fruit][i]);
+    totalFruitInvestment += priceNumber;
+  }
+  var avePurchasePrice = totalFruitInvestment / user[fruit].length;
+  if (user[fruit].length == 0) {
+    avePurchasePrice = 0;
+  }
+  $('.avePrice' + fruit).last().empty();
+  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+}
+
+function updateFruitInventory(fruit){ // this function updates the fruit inventory of a given fruit upon clickFruit and sellFruit
+  var fruitInventory = user[fruit].length;
+  $('.invFruit' + fruit).last().empty();
+  $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
 }
 
 function totalCashMade(){ // calculates a live amount of profit
@@ -251,20 +248,8 @@ function finalSale(array){ // this function is the logic that allows a user to s
       $('#userContainer').first().empty();
       $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
       console.log(user[fruit].length);
-      var totalFruitInvestment = 0;
-      for (var i = 0; i < user[fruit].length; i++){
-        var priceNumber = Number(user[fruit][i]);
-        totalFruitInvestment += priceNumber;
-      }
-      var avePurchasePrice = totalFruitInvestment / user[fruit].length;
-      if (user[fruit].length == 0) {
-        avePurchasePrice = 0;
-      }
-      $('.avePrice' + fruit).last().empty();
-      $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
-      var fruitInventory = user[fruit].length;
-      $('.invFruit' + fruit).last().empty();
-      $('.invFruit' + fruit).last().append("Inventory: " + fruit + " " + fruitInventory);
+      averagePurchasePrice(fruit);
+      updateFruitInventory(fruit);
       totalCashMade();
     }
   }
