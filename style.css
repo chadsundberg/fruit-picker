@@ -4,13 +4,14 @@
   text-align: center;
   font-style: bold;
   font-size: 36px;
-  color: deepskyblue;
+  color: #91d7ee;
   text-shadow: 1px 2px black;
   border: 1px solid black;
   display: inline-block;
   margin: 10px;
   margin-bottom: 0px;
   border-radius: 10px;
+  box-shadow: 2px 4px black;
 }
 
 .apples {
@@ -50,7 +51,7 @@
   font-size: 32px;
   font-family: sans-serif;
   font-weight: bold;
-  color: yellowgreen;
+  color: #bfee91;
   text-shadow: 1px 1px black;
 }
 
@@ -63,8 +64,10 @@
 }
 
 #profitContainer {
-  padding: 20px;
-  color: deepskyblue;
+  padding: 5px;
+  font-size: 32px;
+  font-family: sans-serif;
+  color: #ffb3ff;
   text-shadow: 1px 1px black;
 }
 
@@ -89,13 +92,14 @@ html, body {
   width: 150px;
   height: 50px;
   margin: 0px 50px 10px 30px;
-  background-color: rosybrown;
+  background-color: #91d7ee;
   border-radius: 10px;
+  box-shadow: 2px 4px black;
 }
 
 #time {
  font-family:'Orbitron', sans-serif;
  src: url('put_the_location_to_your_font.ttf or .otf');
- color: lightcoral;
+ color: #ffb3ff;
  text-shadow: 1px 1px black;
 }
