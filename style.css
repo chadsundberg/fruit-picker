@@ -48,6 +48,8 @@
   font-size: 32px;
   font-family: sans-serif;
   font-weight: bold;
+  color: darkkhaki;
+  text-shadow: 1px 1px black;
 }
 
 #fruitContainer {
@@ -56,6 +58,12 @@
   font-family: sans-serif;
   /*width: 100%;*/
   display: inline-block;
+}
+
+#profitContainer {
+  padding: 20px;
+  color: red;
+  /*text-shadow: 1px 1px black;*/
 }
 
 .totalCash {
@@ -83,4 +91,6 @@ html {
 #time {
  font-family:'Orbitron', sans-serif;
  src: url('put_the_location_to_your_font.ttf or .otf');
+ color: lightcoral;
+ text-shadow: 1px 1px black;
 }
