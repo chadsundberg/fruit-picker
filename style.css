@@ -71,6 +71,12 @@
   text-shadow: 1px 1px black;
 }
 
+#unitContainer {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+}
+
 .totalCash {
   padding: 20px;
   font-size: 32px;
