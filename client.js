@@ -211,7 +211,7 @@ function updateFruitInventory(fruit){ // this function updates the fruit invento
 function totalCashMade(){ // calculates a live amount of profit
   var profit = user.totalCash.toFixed(2) - startingCash;
   $('#profitContainer').last().empty();
-  $('#profitContainer').first().append("<div><h4>" + "Profit: $" + profit.toFixed(2) + "</h4></div>");
+  $('#profitContainer').first().append("<div><h2>" + "Profit: $" + profit.toFixed(2) + "</h2></div>");
 }
 
 function startTimer(duration, display) { // displays game timer // todo - get end of game to sell all fruit at current market price, stop prices from changing, and stop timer from resetting
