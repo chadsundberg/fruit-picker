@@ -64,7 +64,10 @@ function Fruit(name, price) { // object constructor assigning name and price, an
 function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
   this.totalCash = startingCash;
-  $('#userContainer').first().append("<div>" + "Total: $" + startingCash.toFixed(2) + "</div>");
+  // $('#userContainer').empty;
+  $('#userContainer').text("Total: $" + startingCash.toFixed(2));
+
+  // totalCash = document.querySelector('#userContainer');
 }
 
 $(document).ready(function(){
@@ -153,8 +156,8 @@ function sellFruit(){ // this function is the logic that allows a user to sell f
   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
-  $('#userContainer').first().empty();
-  $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+  // $('#userContainer').first().empty();
+  $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
   totalCashMade();
@@ -168,8 +171,8 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     user[fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    $('#userContainer').first().empty();
-    $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+    // $('#userContainer').first().empty();
+    $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
   }
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
@@ -247,8 +250,8 @@ function finalSale(array){ // this function is the logic that allows a user to s
       console.log(fruit + " inventory after .pop", user[fruit]);
       user.totalCash += Number(price);
       console.log(fruit + " sale price on final sale: " + price);
-      $('#userContainer').first().empty();
-      $('#userContainer').first().append("<div>" + "Total: $" + user.totalCash.toFixed(2) + "</div>");
+      // $('#userContainer').first().empty();
+      $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
       console.log(user[fruit].length);
       averagePurchasePrice(fruit);
       updateFruitInventory(fruit);

@@ -44,10 +44,14 @@
   margin-left: 20px;
 }
 
+.time {
+  display: inline;
+}
 
 
 #userContainer {
-  padding: 20px;
+  /*padding: 20px;*/
+  /*display: block;*/
   font-size: 32px;
   font-family: sans-serif;
   font-weight: bold;
@@ -64,7 +68,7 @@
 }
 
 #profitContainer {
-  padding: 5px;
+  /*padding: 5px;*/
   font-size: 32px;
   font-family: sans-serif;
   color: #ffb3ff;
