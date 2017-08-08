@@ -65,7 +65,7 @@ function User(){ // sets a user with starting cash to play the game and is used 
   this.startingCash = startingCash;
   this.totalCash = startingCash;
   // $('#userContainer').empty;
-  $('#userContainer').text("Total: $" + startingCash.toFixed(2));
+  $('#userContainer').text("Total Cash: $" + startingCash.toFixed(2));
 
   // totalCash = document.querySelector('#userContainer');
 }
@@ -179,7 +179,7 @@ function sellFruit(){ // this function is the logic that allows a user to sell f
     return alert("You have no " + fruit + " left to sell.");
   }
   // $('#userContainer').first().empty();
-  $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
+  $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
   totalCashMade();
@@ -194,7 +194,7 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     user.totalCash -= price;
     console.log(user);
     // $('#userContainer').first().empty();
-    $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
+    $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
   }
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
@@ -236,7 +236,7 @@ function updateFruitInventory(fruit){ // this function updates the fruit invento
 function totalCashMade(){ // calculates a live amount of profit
   var profit = user.totalCash.toFixed(2) - startingCash;
   $('#profitContainer').last().empty();
-  $('#profitContainer').first().append("<div><h2>" + "Profit: $" + profit.toFixed(2) + "</h2></div>");
+  $('#profitContainer').first().append("<div><h2>" + "Net Profit: $" + profit.toFixed(2) + "</h2></div>");
 }
 
 function startTimer(duration, display) { // displays game timer // todo - get end of game to sell all fruit at current market price, stop prices from changing, and stop timer from resetting
