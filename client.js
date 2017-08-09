@@ -122,7 +122,7 @@ function buildDomFruits(array){ // This is the second function called in init().
     array[i].element = $el;
     var avePurchasePrice = 0;
     var fruitInventory = 0;
-    $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Ave. Purchase Price: $" + avePurchasePrice.toFixed(2) + "</div>");
+    $('#aveContainer').first().append("<div class=avePrice" + array[i].name + ">Avg. Purchase Price: $" + avePurchasePrice.toFixed(2) + "</div>");
     $('#invContainer').first().append("<div class=invFruit" + array[i].name + ">Inventory: " + array[i].name + " " + fruitInventory + "</div>");
   }
   buildSellButtons();
@@ -218,7 +218,7 @@ function averagePurchasePrice(fruit){ // this function averages the price of all
     avePurchasePrice = 0;
   }
   $('.avePrice' + fruit).last().empty();
-  $('.avePrice' + fruit).last().append("Ave. Purchase Price: $" + avePurchasePrice.toFixed(2));
+  $('.avePrice' + fruit).last().append("Avg. Purchase Price: $" + avePurchasePrice.toFixed(2));
 }
 
 function updateFruitInventory(fruit){ // this function updates the fruit inventory of a given fruit upon clickFruit and sellFruit
