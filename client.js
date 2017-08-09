@@ -70,7 +70,7 @@ function User(){ // sets a user with starting cash to play the game and is used 
 // When the user clicks on the button,
 //toggle between hiding and showing the dropdown content
 function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it

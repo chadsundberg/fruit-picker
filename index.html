@@ -15,26 +15,27 @@
   <h1 class="title">
     <div>Fruit Picker Game</div>
   </h1>
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Instructions</button>
-          <div id="myDropdown" class="dropdown-content">
-            <div>Instructions: The object of the game is to make money so try to buy low and sell high.  Prices change randomly every 15 seconds.  To buy a fruit, click on the picture of the fruit which displays the current market price and will deduct that amount from your cash, which starts at $100.  To sell a fruit, click on the sell button, which will sell 1 unit of fruit at the current market price add that number to your current cash amount.  Your average purchase price per unit has been included to help you make money.  When the timer runs out, all of your remaining fruit inventory will be sold at the current market price, your cash will be adjusted, and your profit (or loss) will be adjusted to reflect your outcome.  Refresh the page to try again.  </div>
-          </div>
+  <hr>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Instructions</button>
+    <div id="myDropdown" class="dropdown-content">
+      <div>Instructions: The object of the game is to make money so try to buy low and sell high.  Prices change randomly every 15 seconds.  To buy a fruit, click on the picture of the fruit which displays the current market price and will deduct that amount from your cash, which starts at $100.  To sell a fruit, click on the sell button, which will sell 1 unit of fruit at the current market price add that number to your current cash amount.  Your average purchase price per unit has been included to help you make money.  When the timer runs out, all of your remaining fruit inventory will be sold at the current market price, your cash will be adjusted, and your profit (or loss) will be adjusted to reflect your outcome.  Refresh the page to try again.  </div>
     </div>
-    <div class="time">
-      <div>Game ends in <span id="time">5:00</span></div>
+  </div>
+  <div class="time">
+    <div>Game ends in <span id="time">5:00</span></div>
+  </div>
+  <div id='unitContainer'>
+    <div id='fruitContainer'>
     </div>
-<div id='unitContainer'>
-  <div id='fruitContainer'>
-  </div>
-  <div id='aveContainer'>
-  </div>
-  <div id='invContainer'>
-  </div>
-  <div id='sellContainer'>
-  </div>
+    <div id='aveContainer'>
+    </div>
+    <div id='invContainer'>
+    </div>
+    <div id='sellContainer'>
+    </div>
     <span id='userContainer'></span>
-<div id='profitContainer'></div>
-</div>
+    <div id='profitContainer'></div>
+  </div>
 </body>
 </html>
