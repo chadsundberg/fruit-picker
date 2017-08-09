@@ -64,14 +64,11 @@ function Fruit(name, price) { // object constructor assigning name and price, an
 function User(){ // sets a user with starting cash to play the game and is used below (hoisted downward)
   this.startingCash = startingCash;
   this.totalCash = startingCash;
-  // $('#userContainer').empty;
   $('#userContainer').text("Total Cash: $" + startingCash.toFixed(2));
-
-  // totalCash = document.querySelector('#userContainer');
 }
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+// When the user clicks on the button,
+//toggle between hiding and showing the dropdown content
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -79,7 +76,6 @@ function myFunction() {
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -116,7 +112,6 @@ function buildFruits(array){ // first function called in init(), it takes in the
 
 function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
   for (var i = 0; i < array.length; i++) {
-    // $('#unitContainer').append("<div class=fruit-card></div>"); // added this container to create a border around each fruit displayed.
     $('#fruitContainer').append("<div class=fruit-button></div>"); // camelcase for iDs and dashes for classes
     $('#fruitContainer').children().last();
     var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
@@ -179,7 +174,6 @@ function sellFruit(){ // this function is the logic that allows a user to sell f
   } else {
     return alert("You have no " + fruit + " left to sell.");
   }
-  // $('#userContainer').first().empty();
   $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
@@ -194,7 +188,6 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     user[fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    // $('#userContainer').first().empty();
     $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
   }
   averagePurchasePrice(fruit);
@@ -273,7 +266,6 @@ function finalSale(array){ // this function is the logic that allows a user to s
       console.log(fruit + " inventory after .pop", user[fruit]);
       user.totalCash += Number(price);
       console.log(fruit + " sale price on final sale: " + price);
-      // $('#userContainer').first().empty();
       $('#userContainer').text("Total: $" + user.totalCash.toFixed(2));
       console.log(user[fruit].length);
       averagePurchasePrice(fruit);
