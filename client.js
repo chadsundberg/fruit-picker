@@ -90,6 +90,29 @@ window.onclick = function(event) {
 
 $(document).ready(function(){
   init(); // the entire game runs within this function
+  // $('.sell-button').bind("mouseover", function(){
+  //   var color  = $(this).css("background-color");
+  //   $(this).css("background", "gray");
+  //   $(this).bind("mouseout", function(){
+  //     $(this).css("background-color", color);
+  //   })
+  // });
+
+  $('.dropbtn').bind("mouseover", function(){
+    var color  = $(this).css("background-color");
+    $(this).css("background", "green");
+    $(this).bind("mouseout", function(){
+      $(this).css("background", color);
+    })
+  });
+
+  $('.fruit-button').bind("mouseover", function(){
+    var opacity  = $(this).css("opacity");
+    $(this).css("opacity", ".5");
+    $(this).bind("mouseout", function(){
+      $(this).css("opacity", opacity);
+    })
+  });
 });
 
 function init() { // the init function is a string of other functions
@@ -139,6 +162,13 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
     var $el = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", name);
     $el.data("price", price);
+    // $('.sell-button').bind("mouseover", function(){ // need to get this in the right place so that it works.
+    //   var color  = $(this).css("background-color");
+    //   $(this).css("background", "gray");
+    //   $(this).bind("mouseout", function(){
+    //     $(this).css("background-color", color);
+    //   })
+    // });
   }
 }
 
@@ -274,6 +304,16 @@ function finalSale(array){ // this function is the logic that allows a user to s
     }
   }
 }
+
+// $('.sell-button').bind("mouseover", function(){
+//             var color  = $(this).css("background-color");
+//
+//             $(this).css("background", "gray");
+//
+//             $(this).bind("mouseout", function(){
+//                 $(this).css("background", color);
+//             })
+//         });
 
 // Utility functions
 function randomNumber(min, max) { // this function generates random numbers and is used in the priceChange function
