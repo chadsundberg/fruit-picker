@@ -90,13 +90,13 @@ window.onclick = function(event) {
 
 $(document).ready(function(){
   init(); // the entire game runs within this function
-  // $('.sell-button').bind("mouseover", function(){
-  //   var color  = $(this).css("background-color");
-  //   $(this).css("background", "gray");
-  //   $(this).bind("mouseout", function(){
-  //     $(this).css("background-color", color);
-  //   })
-  // });
+  $('.sell-button').bind("mouseover", function(){
+    var color  = $(this).css("background-color");
+    $(this).css("background", "gray");
+    $(this).bind("mouseout", function(){
+      $(this).css("background-color", color);
+    })
+  });
 
   $('.dropbtn').bind("mouseover", function(){
     var color  = $(this).css("background-color");
@@ -162,13 +162,6 @@ function buildSellButtons(){ // this function creates sell buttons on the DOM
     var $el = $('#sellContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
     $el.data("fruit", name);
     $el.data("price", price);
-    // $('.sell-button').bind("mouseover", function(){ // need to get this in the right place so that it works.
-    //   var color  = $(this).css("background-color");
-    //   $(this).css("background", "gray");
-    //   $(this).bind("mouseout", function(){
-    //     $(this).css("background-color", color);
-    //   })
-    // });
   }
 }
 
@@ -191,6 +184,13 @@ function gameInterval(){ // this function runs the price changes every 15 second
   }
   updateFruitDom();
   buildSellButtons();
+  $('.sell-button').bind("mouseover", function(){
+    var color  = $(this).css("background-color");
+    $(this).css("background", "gray");
+    $(this).bind("mouseout", function(){
+      $(this).css("background-color", color);
+    })
+  });
 }
 
 function sellFruit(){ // this function is the logic that allows a user to sell fruit at current market price, get an updated average price purchased, and an updated inventory number
@@ -304,16 +304,6 @@ function finalSale(array){ // this function is the logic that allows a user to s
     }
   }
 }
-
-// $('.sell-button').bind("mouseover", function(){
-//             var color  = $(this).css("background-color");
-//
-//             $(this).css("background", "gray");
-//
-//             $(this).bind("mouseout", function(){
-//                 $(this).css("background", color);
-//             })
-//         });
 
 // Utility functions
 function randomNumber(min, max) { // this function generates random numbers and is used in the priceChange function
