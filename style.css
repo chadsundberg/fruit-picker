@@ -42,7 +42,7 @@
   justify-content: center;
   margin: 10px;
   width: 230px;
-  /*margin-left: 10px;*/
+  /*margin-left: 13px;*/
   font-size: 18px;
 }
 
@@ -50,14 +50,14 @@
   display: inline-block;
   margin: 10px;
   width: 230px;
-  /*margin-left: 20px;*/
+  /*margin-left: 13px;*/
   font-size: 18px;
   justify-content: center;
 }
 
 .time {
   display: block;
-  margin-left: 25px;
+  margin-left: 30px;
   font-size: 32px;
 }
 
@@ -70,7 +70,8 @@
   font-weight: bold;
   color: #bfee91;
   text-shadow: 1px 1px black;
-  margin-left: 5px;
+  margin-left: 10px;
+  margin-top: 15px;
 }
 
 #fruitContainer {
@@ -87,7 +88,7 @@
   font-family: sans-serif;
   color: #ffb3ff;
   text-shadow: 1px 1px black;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 #unitContainer {
@@ -101,7 +102,7 @@
 }*/
 
 .totalCash {
-  /*margin: 20px;*/
+  margin: 10px;
   /*font-size: 32px;*/
   font-family: sans-serif;
   font-weight: bold;
@@ -113,7 +114,7 @@ html, body {
 }
 
 .title {
-  margin-left: 25px;
+  margin-left: 30px;
 }
 
 .sell-button {
@@ -123,6 +124,7 @@ html, body {
   font-family: sans-serif;
   /*margin: 20px;*/
   margin: 10px;
+  margin-bottom: 20px;
   width: 230px;
   height: 50px;
   /*margin: 0px 50px 10px 30px;*/
@@ -155,7 +157,7 @@ html, body {
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    margin-left: 25px;
+    margin-left: 30px;
     position: relative;
     display: inline-block;
 }
