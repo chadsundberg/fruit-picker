@@ -15,12 +15,6 @@
   box-shadow: 2px 4px black;
 }
 
-/*#fruit-card {
-  border-radius: 10px;
-  border-style: solid;
-  border-width: medium;
-}*/
-
 .apples {
   background-image: url("./images/apples.jpeg");
 }
@@ -42,7 +36,6 @@
   justify-content: center;
   margin: 10px;
   width: 230px;
-  /*margin-left: 13px;*/
   font-size: 18px;
   margin-right: 30px;
 }
@@ -52,7 +45,6 @@
   margin: 10px;
   width: 230px;
   margin-right: 30px;
-  /*margin-left: 13px;*/
   font-size: 18px;
   justify-content: center;
 }
@@ -65,8 +57,6 @@
 
 
 #userContainer {
-  /*padding: 20px;*/
-  /*display: block;*/
   font-size: 32px;
   font-family: sans-serif;
   font-weight: bold;
@@ -77,15 +67,12 @@
 }
 
 #fruitContainer {
-  /*padding: 20px;*/
   font-size: 24px;
   font-family: sans-serif;
-  /*width: 100%;*/
   display: inline-block;
 }
 
 #profitContainer {
-  /*padding: 5px;*/
   font-size: 32px;
   font-family: sans-serif;
   color: #ffb3ff;
@@ -94,18 +81,11 @@
 }
 
 #unitContainer {
-  /*display: block;*/
-  /*padding: 10px;*/
   margin-left: 20px;
 }
 
-/*.user {
-  margin: 10px;
-}*/
-
 .totalCash {
   margin: 10px;
-  /*font-size: 32px;*/
   font-family: sans-serif;
   font-weight: bold;
 }
@@ -121,15 +101,12 @@ html, body {
 
 .sell-button {
   display: inline-block;
-  /*padding: 20px;*/
   font-size: 24px;
   font-family: sans-serif;
-  /*margin: 20px;*/
   margin: 10px;
   margin-bottom: 20px;
   width: 230px;
   height: 50px;
-  /*margin: 0px 50px 10px 30px;*/
   background-color: #91d7ee;
   border-radius: 10px;
   box-shadow: 2px 4px black;
@@ -168,9 +145,7 @@ html, body {
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
-    /*position: absolute;*/
     background-color: #f9f9f9;
-    /*min-width: 160px;*/
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 8px;
