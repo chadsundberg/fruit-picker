@@ -116,6 +116,7 @@ function buildFruits(array){ // first function called in init(), it takes in the
 
 function buildDomFruits(array){ // This is the second function called in init().  this function builds the fruit buttons on the DOM from the fruit object and assigns names and prices.
   for (var i = 0; i < array.length; i++) {
+    // $('#unitContainer').append("<div class=fruit-card></div>"); // added this container to create a border around each fruit displayed.
     $('#fruitContainer').append("<div class=fruit-button></div>"); // camelcase for iDs and dashes for classes
     $('#fruitContainer').children().last();
     var $el = $('#fruitContainer').children().last();  // the $ in front of the variable is a hint to let myself know that this is a jquery dependent variable.
