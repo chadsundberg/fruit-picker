@@ -12,10 +12,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 class="title">
+  <div id='titleBackground'
+  <div class="title">
     <div>Fruit Picker Game</div>
-  </h1>
-  <hr>
+    </div>
+    <hr id='topLine'>
+</div>
   <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Instructions</button>
     <div id="myDropdown" class="dropdown-content">
@@ -25,17 +27,23 @@
   <div class="time">
     <div>Game clock: <span id="time">5:00</span></div>
   </div>
+  <div id='backgroundContainer'>
+    <hr>
   <div id='unitContainer'>
+
     <div id='fruitContainer'>
     </div>
     <div id='aveContainer'>
     </div>
     <div id='invContainer'>
     </div>
+
     <div id='sellContainer'>
     </div>
     <span id='userContainer'></span>
     <div id='profitContainer'></div>
-  </div>
+</div>
+<hr>
+</div>
 </body>
 </html>
