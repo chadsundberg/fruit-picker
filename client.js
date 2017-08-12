@@ -305,6 +305,8 @@ function finalSale(array){ // this function is the logic that allows a user to s
   }
 }
 
+// add a out of cash message
+
 // Utility functions
 function randomNumber(min, max) { // this function generates random numbers and is used in the priceChange function
   return Math.floor(Math.random() * (1 + max - min) + min);
