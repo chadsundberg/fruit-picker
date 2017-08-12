@@ -218,8 +218,10 @@ function clickFruit(){ // this function is the logic that allows a user to purch
     user[fruit].push(price);
     user.totalCash -= price;
     console.log(user);
-    $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
+  } else {
+    return alert("You don't have enough money to buy " + fruit + ".");
   }
+  $('#userContainer').text("Total Cash: $" + user.totalCash.toFixed(2));
   averagePurchasePrice(fruit);
   updateFruitInventory(fruit);
   totalCashMade();
@@ -304,8 +306,6 @@ function finalSale(array){ // this function is the logic that allows a user to s
     }
   }
 }
-
-// add a out of cash message
 
 // Utility functions
 function randomNumber(min, max) { // this function generates random numbers and is used in the priceChange function
