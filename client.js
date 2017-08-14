@@ -302,7 +302,7 @@ function finalSale(array){ // this function is the logic that allows a user to s
       console.log(user[fruit].length);
       averagePurchasePrice(fruit);
       updateFruitInventory(fruit);
-         totalCashMade();
+      totalCashMade();
     }
   }
 }
