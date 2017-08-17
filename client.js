@@ -175,7 +175,7 @@ function disable(){ // this function ends the game and stops prices from changin
   $("#fruitContainer").off('click');
   $("#sellContainer").off('click');
   clearInterval(fullGame);
-  finalSale(fruitArray);
+   finalSale(fruitArray);
 }
 
 function gameInterval(){ // this function runs the price changes every 15 seconds
