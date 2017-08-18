@@ -188,7 +188,7 @@ function gameInterval(){ // this function runs the price changes every 15 second
     var color  = $(this).css("background-color");
     $(this).css("background", "gray");
     $(this).bind("mouseout", function(){
-      $(this).css("background-color", color);
+    $(this).css("background-color", color);
     })
   });
 }
